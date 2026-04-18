@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ── Tamil & Sinhala font fallbacks ── */
+:lang(ta) { font-family: 'Noto Sans Tamil', 'Outfit', system-ui, sans-serif; }
+:lang(si) { font-family: 'Noto Sans Sinhala', 'Outfit', system-ui, sans-serif; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FFF5EB; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#F4A435, #E8735A);
+  border-radius: 3px;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes petalFall {
+  0%   { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(110vh) rotate(540deg) translateX(60px); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%       { transform: translateY(-14px) rotate(1deg); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%      { transform: scale(1.28); }
+  28%      { transform: scale(1); }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes gradShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.7); }
+  50%      { opacity: 1;    transform: scale(1.3); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(244, 164, 53, 0.2); }
+  50%      { box-shadow: 0 0 40px rgba(244, 164, 53, 0.5); }
+}
+
+/* ── Landing Page Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, #F4A435, #E8735A);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 24px rgba(244, 164, 53, 0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(244, 164, 53, 0.55);
+}
+
+.btn-white {
+  background: white;
+  color: #E8735A;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.25s;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+.btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+}
+
+.btn-outline-w {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+.btn-outline-w:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+
+/* ── Landing Page Cards ── */
+.feat-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 28px;
+  border: 1.5px solid rgba(244, 164, 53, 0.1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+.feat-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 24px 64px rgba(244, 164, 53, 0.14);
+}
+.feat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--fc);
+  transform: scaleX(0);
+  transition: transform 0.35s;
+  transform-origin: left;
+}
+.feat-card:hover::after {
+  transform: scaleX(1);
+}
+
+.partner-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 22px;
+  border: 1.5px solid rgba(244, 164, 53, 0.08);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.09);
+  border-color: rgba(244, 164, 53, 0.25);
+}
+
+.step-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 22px;
+  border: 1.5px solid rgba(244, 164, 53, 0.1);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.step-card:hover {
+  box-shadow: 0 18px 52px rgba(244, 164, 53, 0.13);
+  transform: translateY(-6px);
+}
+
+/* ── Form Inputs ── */
+.sf {
+  border: 1.5px solid #F0E4D0;
+  border-radius: 12px;
+  padding: 11px 15px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: #2A1A1A;
+  background: #FFFBF7;
+  transition: all 0.3s;
+  outline: none;
+  width: 100%;
+}
+.sf:focus {
+  border-color: #F4A435;
+  box-shadow: 0 0 0 4px rgba(244, 164, 53, 0.1);
+  background: white;
+}
+
+/* ── Nav Links ── */
+.nl {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+.nl::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #F4A435, #E8735A);
+  transition: width 0.3s;
+  border-radius: 2px;
+}
+.nl:hover::after {
+  width: 100%;
+}
+
+/* ── Schema Viewer ── */
+.schema-pre {
+  background: #0D1117;
+  color: #E8C96A;
+  font-family: 'Courier New', monospace;
+  font-size: 0.76rem;
+  line-height: 1.9;
+  padding: 32px;
+  border-radius: 16px;
+  overflow: auto;
+  white-space: pre;
+  max-height: 520px;
+  border: 1px solid rgba(244, 164, 53, 0.2);
+}
+.schema-pre::-webkit-scrollbar { width: 4px; height: 4px; }
+.schema-pre::-webkit-scrollbar-thumb { background: #F4A435; border-radius: 2px; }
+
+/* ── Responsive Grid Helpers ── */
+@media (max-width: 900px) {
+  .nav-d { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  .hero-g  { grid-template-columns: 1fr !important; }
+  .hero-r  { display: none !important; }
+  .feat-g  { grid-template-columns: 1fr 1fr !important; }
+  .part-g  { grid-template-columns: 1fr 1fr !important; }
+  .step-g  { grid-template-columns: 1fr 1fr !important; }
+  .stat-g  { grid-template-columns: 1fr 1fr !important; }
+  .foot-g  { grid-template-columns: 1fr 1fr !important; }
+  .sch-g   { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 480px) {
+  .feat-g { grid-template-columns: 1fr !important; }
+  .part-g { grid-template-columns: 1fr !important; }
+  .step-g { grid-template-columns: 1fr !important; }
+  .foot-g { grid-template-columns: 1fr !important; }
+  .sch-g  { grid-template-columns: 1fr 1fr !important; }
+}

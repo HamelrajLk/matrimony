@@ -1,0 +1,250 @@
+{
+  "nav": {
+    "home": "Home",
+    "browseProfiles": "Browse Profiles",
+    "partners": "Wedding Partners",
+    "about": "About",
+    "login": "Login",
+    "signUp": "Sign Up Free",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "profile": "My Profile",
+    "matches": "Matches",
+    "chat": "Chat",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Sri Lanka's #1 Matrimony & Wedding Platform",
+    "subline": "Find your life partner and plan your perfect wedding — all in one place.",
+    "cta": "Find Your Match",
+    "ctaSecondary": "Explore Wedding Partners",
+    "stats": {
+      "profiles": "Profiles",
+      "countries": "Countries",
+      "couples": "Happy Couples"
+    },
+    "floatCard": {
+      "verified": "Verified Profile",
+      "newMatches": "New Matches Today"
+    }
+  },
+  "search": {
+    "title": "Find Your Perfect Match",
+    "lookingFor": "Looking For",
+    "bride": "Bride (Female)",
+    "groom": "Groom (Male)",
+    "anyone": "Anyone",
+    "ageFrom": "Age From",
+    "ageTo": "Age To",
+    "motherTongue": "Mother Tongue",
+    "motherTonguePlaceholder": "Mother tongue",
+    "searchBtn": "Search Now",
+    "years": "yrs"
+  },
+  "features": {
+    "heading": "Everything You Need",
+    "subheading": "One platform for your entire wedding journey — from finding a life partner to booking every wedding service.",
+    "individual": {
+      "title": "Individual Profiles",
+      "desc": "Create your matrimony profile with photos, family details, and preferences to attract compatible matches."
+    },
+    "verified": {
+      "title": "Verified Matches",
+      "desc": "Every profile is verified by our team or your trusted matchmaker for authenticity and safety."
+    },
+    "broker": {
+      "title": "Matchmaker Network",
+      "desc": "Connect with professional brokers who manage profiles and personally oversee introductions."
+    },
+    "partners": {
+      "title": "Wedding Partners",
+      "desc": "Browse and book Sri Lanka's top photographers, venues, caterers, makeup artists and more."
+    },
+    "global": {
+      "title": "Global Sri Lankan",
+      "desc": "Serving the Sri Lankan diaspora across UK, Australia, Canada, UAE, and worldwide."
+    },
+    "privacy": {
+      "title": "Privacy First",
+      "desc": "Your contact details stay hidden until you choose to share them. You stay in control."
+    }
+  },
+  "partners": {
+    "heading": "Wedding Partners",
+    "subheading": "Book trusted professionals for your perfect wedding day.",
+    "viewAll": "View All Partners",
+    "bookNow": "Book Now",
+    "categories": {
+      "photography": "Photography",
+      "videography": "Videography",
+      "venue": "Venue & Halls",
+      "catering": "Catering",
+      "makeup": "Makeup & Beauty",
+      "florist": "Florist",
+      "music": "Music & DJ",
+      "decor": "Decoration"
+    }
+  },
+  "steps": {
+    "heading": "How It Works",
+    "subheading": "Your journey to a perfect match in four simple steps.",
+    "step1": { "title": "Create Profile", "desc": "Sign up and build your detailed matrimony profile with photos and preferences." },
+    "step2": { "title": "Browse Matches", "desc": "Explore compatible profiles filtered by religion, location, education, and more." },
+    "step3": { "title": "Connect", "desc": "Send a match request. When both sides accept, you can start chatting directly." },
+    "step4": { "title": "Celebrate", "desc": "Book all your wedding services through our trusted partner network." }
+  },
+  "testimonials": {
+    "heading": "Success Stories",
+    "subheading": "Thousands of couples found their perfect match on The Wedding Partners."
+  },
+  "cta": {
+    "heading": "Ready to Find Your Match?",
+    "subheading": "Join thousands of Sri Lankans worldwide who have found love through The Wedding Partners.",
+    "btn": "Create Free Profile",
+    "btnSecondary": "Browse Profiles"
+  },
+  "footer": {
+    "tagline": "Sri Lanka's #1 Matrimony & Wedding Platform",
+    "links": {
+      "matrimony": "Matrimony",
+      "weddingServices": "Wedding Services",
+      "company": "Company"
+    },
+    "browse": "Browse Profiles",
+    "search": "Search",
+    "matchmakers": "Matchmakers",
+    "photographers": "Photographers",
+    "venues": "Venues & Halls",
+    "catering": "Catering",
+    "makeup": "Makeup Artists",
+    "about": "About Us",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account",
+      "email": "Email Address",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "btn": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up free"
+    },
+    "signup": {
+      "title": "Create Your Account",
+      "subtitle": "Join thousands of Sri Lankans finding love",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "btn": "Create Account",
+      "haveAccount": "Already have an account?",
+      "login": "Sign in"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email to reset your password",
+      "email": "Email Address",
+      "btn": "Send Reset Link",
+      "backToLogin": "Back to login"
+    }
+  },
+  "browse": {
+    "title": "Browse Profiles",
+    "subtitle": "Find your compatible match",
+    "filters": "Filters",
+    "lookingFor": "Looking For",
+    "bride": "Bride (Female)",
+    "groom": "Groom (Male)",
+    "anyone": "Anyone",
+    "ageRange": "Age Range",
+    "religion": "Religion",
+    "country": "Country",
+    "education": "Education",
+    "maritalStatus": "Marital Status",
+    "motherTongue": "Mother Tongue",
+    "hasPhoto": "Has Photo",
+    "search": "Search",
+    "reset": "Reset",
+    "noResults": "No profiles found",
+    "noResultsHint": "Try adjusting your filters",
+    "profilesFound": "profiles found",
+    "any": "Any",
+    "years": "yrs",
+    "verified": "Verified",
+    "viewProfile": "View Profile"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "myProfile": "My Profile",
+    "matches": "My Matches",
+    "dailyMatches": "Daily Matches",
+    "chat": "Messages",
+    "settings": "Settings",
+    "logout": "Logout",
+    "completeProfile": "Complete your profile to start matching",
+    "profileId": "Profile ID"
+  },
+  "profile": {
+    "editProfile": "Edit Profile",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel",
+    "basicInfo": "Basic Information",
+    "appearance": "Appearance",
+    "lifestyle": "Lifestyle",
+    "education": "Education & Career",
+    "family": "Family Details",
+    "location": "Location",
+    "about": "About Me",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "gender": "Gender",
+    "dateOfBirth": "Date of Birth",
+    "maritalStatus": "Marital Status",
+    "religion": "Religion",
+    "motherTongue": "Mother Tongue",
+    "height": "Height (cm)",
+    "weight": "Weight (kg)",
+    "bodyType": "Body Type",
+    "physicalStatus": "Physical Status",
+    "smoking": "Smoking",
+    "drinking": "Drinking",
+    "eating": "Eating Habits",
+    "employmentStatus": "Employment Status",
+    "occupation": "Occupation",
+    "education_field": "Highest Education",
+    "income": "Annual Income",
+    "currency": "Currency",
+    "nativeCountry": "Native Country",
+    "countryLiving": "Country Living In",
+    "citizenship": "Citizenship",
+    "aboutMe": "About Me",
+    "aboutFamily": "About Family",
+    "fatherName": "Father's Name",
+    "motherName": "Mother's Name",
+    "brothers": "No. of Brothers",
+    "sisters": "No. of Sisters"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "select": "Select",
+    "search": "Search",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "notSpecified": "Not specified",
+    "viewMore": "View More",
+    "noData": "No data available"
+  }
+}

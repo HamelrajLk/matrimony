@@ -1,0 +1,11 @@
+Week 1-2:   Auth (signup, login, JWT, protected routes)
+Week 3-4:   Individual profile CRUD + photo upload
+Week 5-6:   Search & filter profiles
+Week 7-8:   Broker dashboard (manage multiple profiles)
+Week 9-10:  Partner registration + listing pages
+Week 11-12: Matching system + chat (Socket.io)
+Week 13-14: Booking system for partners
+Week 15-16: Notifications + email alerts
+Week 17-18: Payments (Stripe + PayHere)
+Week 19-20: Admin dashboard + verification system
+Week 21+:   AI matchmaking scoring, mobile app (React Native)

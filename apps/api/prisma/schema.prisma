@@ -1,0 +1,1298 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// All former enums are now lookup tables in the LOOKUP / REFERENCE TABLES section below.
+// Fields that previously used enums now store plain String values — same value strings as before.
+
+// ────────────────────────────────────────────────────────────────
+//  LOOKUP / REFERENCE TABLES
+// ────────────────────────────────────────────────────────────────
+
+model Country {
+  id       Int     @id @default(autoincrement())
+  name     String
+  nameTa   String? @map("name_ta")
+  nameSi   String? @map("name_si")
+  code     String? // ISO 2-letter — "LK", "GB", "AU"
+  currency String? // "LKR", "GBP", "AUD"
+
+  profilesNative      Profile[] @relation("NativeCountry")
+  profilesLiving      Profile[] @relation("CountryLiving")
+  profilesCitizenship Profile[] @relation("Citizenship")
+
+  @@map("countries")
+}
+
+model Religion {
+  id     Int     @id @default(autoincrement())
+  name   String  // Hindu, Buddhist, Christian (NON RC), Roman Catholic, Muslim,
+  nameTa String? @map("name_ta")
+  nameSi String? @map("name_si")
+
+  profiles    Profile[] @relation("ProfileReligion")
+
+  @@map("religions")
+}
+
+model MotherTongue {
+  id     Int     @id @default(autoincrement())
+  name   String  // Tamil, Sinhala, English, Other
+  nameTa String? @map("name_ta")
+  nameSi String? @map("name_si")
+
+  profiles    Profile[] @relation("ProfileMotherTongue")
+
+  @@map("mother_tongues")
+}
+
+model Education {
+  id     Int     @id @default(autoincrement())
+  name   String  // Higher/Secondary School, Professional Certification, Diploma, Bachelor's, Master's, PhD…
+  nameTa String? @map("name_ta")
+  nameSi String? @map("name_si")
+
+  profiles    Profile[]           @relation("ProfileEducation")
+  preferences ProfilePreference[] @relation("PreferredEducation")
+
+  @@map("educations")
+}
+
+model BodyTypeOption {
+  id            Int     @id @default(autoincrement())
+  value         String  @unique  // SLIM, ATHLETIC, AVERAGE, HEAVY
+  label         String           // Slim, Athletic, Average, Heavy
+  labelTa       String? @map("label_ta")
+  labelSi       String? @map("label_si")
+  description   String           // Slender build, Toned & fit, etc.
+  descriptionTa String? @map("description_ta")
+  descriptionSi String? @map("description_si")
+  svgContent    String? @map("svg_content") // Inner SVG path markup
+  sortOrder     Int     @default(0) @map("sort_order")
+
+  @@map("body_type_options")
+}
+
+model MaritalStatusOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // UNMARRIED, DIVORCED, WIDOWED, SEPARATED
+  label     String           // Never Married, Divorced, Widowed, Separated
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("marital_status_options")
+}
+
+model GenderOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // MALE, FEMALE
+  label     String           // Groom (Male), Bride (Female)
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("gender_options")
+}
+
+model PhysicalStatusOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // NORMAL, PHYSICALLY_CHALLENGED
+  label     String
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("physical_status_options")
+}
+
+model SmokingHabitOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // YES, NO, DOESNT_MATTER
+  label     String
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("smoking_habit_options")
+}
+
+model DrinkingHabitOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // NON_DRINKER, LIGHT_SOCIAL, REGULAR, DOESNT_MATTER
+  label     String
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("drinking_habit_options")
+}
+
+model EatingHabitOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // VEGETARIAN, NON_VEGETARIAN, HALAL_ALWAYS, HALAL_WHEN_POSSIBLE, NO_RESTRICTION
+  label     String
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("eating_habit_options")
+}
+
+model EmploymentStatusOption {
+  id        Int     @id @default(autoincrement())
+  value     String  @unique  // GOVERNMENT, PRIVATE, BUSINESS, SELF_EMPLOYED, NOT_WORKING
+  label     String
+  labelTa   String? @map("label_ta")
+  labelSi   String? @map("label_si")
+  icon      String?
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@map("employment_status_options")
+}
+
+model OccupationGroup {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique // Healthcare, Engineering, Business…
+  nameTa      String?      @map("name_ta")
+  nameSi      String?      @map("name_si")
+  occupations Occupation[]
+
+  @@map("occupation_groups")
+}
+
+model Occupation {
+  id      Int             @id @default(autoincrement())
+  groupId Int             @map("group_id")
+  group   OccupationGroup @relation(fields: [groupId], references: [id])
+  name    String          // Doctor, Engineer, Accountant…
+  nameTa  String?         @map("name_ta")
+  nameSi  String?         @map("name_si")
+
+  profiles       Profile[] @relation("ProfileOccupation")
+  fatherProfiles Profile[] @relation("FatherOccupation")
+  motherProfiles Profile[] @relation("MotherOccupation")
+
+  @@map("occupations")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  USER
+//  Single table for all account types.
+//  role = USER      → matrimony seeker
+//  role = PARTNER   → wedding service business (see Partner model)
+//  role = ADMIN     → platform admin
+//
+//  Admin disables any account by setting status = INACTIVE.
+//  Your auth middleware must check this on every login attempt.
+// ────────────────────────────────────────────────────────────────
+
+model User {
+  id    Int        @id @default(autoincrement())
+  email String     @unique
+  phone String?
+  password String  // bcrypt hash — never store plain text
+
+  role   String         // USER | PARTNER | ADMIN
+  status String @default("PENDING") // Admin controls this
+
+  // Verification timestamps
+  emailVerifiedAt DateTime? @map("email_verified_at")
+  phoneVerifiedAt DateTime? @map("phone_verified_at")
+
+  // ── Subscription (feature gating — future use) ──────────────
+  subscriptionPlan      String @default("FREE") @map("subscription_plan")
+  subscriptionExpiresAt DateTime?        @map("subscription_expires_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  passwordResetToken   String?   @map("password_reset_token")
+  passwordResetExpires DateTime? @map("password_reset_expires")
+
+  emailVerifyOtp        String?   @map("email_verify_otp")
+  emailVerifyOtpExpires DateTime? @map("email_verify_otp_expires")
+
+  // ── Relations ───────────────────────────────────────────────
+  // USER role → owns at most one matrimony profile
+  ownProfile Profile? @relation("UserOwnProfile")
+
+  // PARTNER role (with MATCHMAKER type) → can own many profiles for clients
+  managedProfiles Profile[] @relation("MatchMakerProfiles")
+
+  // PARTNER role → has one Partner business record
+  partnerProfile Partner?
+
+  // USER role → saved searches
+  savedSearches SavedSearch[]
+
+  // Notifications
+  notifications Notification[]
+
+  // Bookings
+  bookings Booking[]
+
+  // Subscriptions
+  subscriptions UserSubscription[]
+
+  // Makeup artist interactions
+  eventReviews       EventReview[]
+  photoLikes         PhotoLike[]
+  makeupProfileViews MakeupProfileView[]
+
+  @@map("users")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PARTNER
+//  Business details for any user with role = PARTNER.
+//  One Partner can offer multiple service types via PartnerTypeAssignment.
+//
+//  Examples:
+//    • A matchmaker agency       → types: [MATCHMAKER]
+//    • A wedding studio          → types: [PHOTOGRAPHER, VIDEOGRAPHER]
+//    • An all-in-one planner     → types: [MATCHMAKER, VENUE, CATERING]
+// ────────────────────────────────────────────────────────────────
+
+model Partner {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique @map("user_id")
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  businessName  String  @map("business_name")
+  businessEmail String  @map("business_email")
+  contactPerson String? @map("contact_person")
+  bannerPath    String? @map("banner_path")   // hero image URL
+  logoImage     String? @map("logo_image")      // circular logo / profile picture
+  website       String?
+  bio           String? // about the business
+
+  status String @default("ACTIVE") // ACTIVE | INACTIVE
+
+  // ── Service types (many-to-many) ────────────────────────────
+  // A partner can be MATCHMAKER + PHOTOGRAPHER at the same time etc.
+  types PartnerTypeAssignment[]
+
+  // ── Contact info ────────────────────────────────────────────
+  addresses PartnerAddress[]
+  phones    PartnerPhone[]
+
+  // ── Matchmaker-specific ─────────────────────────────────────
+  // Only relevant when types includes MATCHMAKER
+  // yearsOfExperience and profilePriority (see Profile) handle
+  // pinning profiles on the matchmaker's public page
+  yearsOfExperience Int? @map("years_of_experience")
+
+  successStories MatchmakerSuccessStory[]
+  bookings       Booking[]
+  makeupProfile  MakeupArtistProfile?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@map("partners")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  MATCHMAKER SUCCESS STORY
+// ────────────────────────────────────────────────────────────────
+
+model MatchmakerSuccessStory {
+  id          Int     @id @default(autoincrement())
+  partnerId   Int     @map("partner_id")
+  partner     Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  coupleName  String   @map("couple_name")
+  story       String?  @db.Text
+  photoUrl    String?  @map("photo_url")
+  videoUrl    String?  @map("video_url")   // YouTube URL
+  isPublic    Boolean  @default(true) @map("is_public")
+
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt      @map("updated_at")
+
+  @@map("matchmaker_success_stories")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PARTNER TYPE ASSIGNMENT  (join table — many-to-many)
+//  Allows one Partner to have multiple PartnerType values.
+//
+//  e.g. partnerId=5 can have two rows:
+//    { partnerId: 5, type: MATCHMAKER }
+//    { partnerId: 5, type: PHOTOGRAPHER }
+// ────────────────────────────────────────────────────────────────
+
+model PartnerTypeAssignment {
+  id        Int         @id @default(autoincrement())
+  partnerId Int         @map("partner_id")
+  partner   Partner     @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  type      String      // MATCHMAKER | PHOTOGRAPHER | VENUE | …
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // A partner can't have the same type twice
+  @@unique([partnerId, type])
+  @@map("partner_type_assignments")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PARTNER ADDRESS  (one partner → many addresses)
+// ────────────────────────────────────────────────────────────────
+
+model PartnerAddress {
+  id         Int          @id @default(autoincrement())
+  partnerId  Int          @map("partner_id")
+  partner    Partner      @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  address1   String?      @map("address_1")
+  address2   String?      @map("address_2")
+  city       String?
+  state      String?
+  countryCode String      @map("country_code") // ISO 2-letter code
+  postalCode String?      @map("postal_code")
+  status     String       @default("ACTIVE")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@map("partner_addresses")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PARTNER PHONE  (one partner → many phones)
+// ────────────────────────────────────────────────────────────────
+
+model PartnerPhone {
+  id        Int          @id @default(autoincrement())
+  partnerId Int          @map("partner_id")
+  partner   Partner      @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  label     String?      // "Office", "WhatsApp", "Mobile"
+  number    String
+  status    String       @default("ACTIVE")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@map("partner_phones")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PROFILE  (matrimony profile)
+//
+//  Created by one of three people:
+//    1. The USER themselves          (createdByType = SELF)
+//    2. A parent / relative          (createdByType = PARENT_OR_RELATIVE)
+//       → userId is set, matchMakerUserId is null
+//    3. A PARTNER with MATCHMAKER    (createdByType = MATCHMAKER)
+//       → matchMakerUserId is set, userId may be null
+//
+//  profilePriority:
+//    Matchmaker sets this to pin/feature profiles on their public page.
+//    Higher number = appears higher in the listing.
+//    Query: orderBy { profilePriority: 'desc' }
+//
+//  isVerified / verifiedAt:
+//    Admin checks all required fields are filled and sets isVerified = true.
+//    Status flow: INCOMPLETE → PENDING_VERIFICATION → VERIFIED → ACTIVE
+// ────────────────────────────────────────────────────────────────
+
+model Profile {
+  id Int @id @default(autoincrement())
+
+  // ── Ownership ──────────────────────────────────────────────
+  // The USER this profile belongs to (null if matchmaker created
+  // it for a client who has no account yet)
+  userId Int?  @unique @map("user_id") // @unique → one profile per USER
+  user   User? @relation("UserOwnProfile", fields: [userId], references: [id], onDelete: SetNull)
+
+  // The PARTNER (matchmaker) who manages this profile
+  // References User.id where that user's role = PARTNER
+  // and their Partner record has type MATCHMAKER
+  matchMakerUserId Int?  @map("match_maker_user_id")
+  matchMaker       User? @relation("MatchMakerProfiles", fields: [matchMakerUserId], references: [id], onDelete: SetNull)
+
+  // How was it created?
+  createdByType String @default("MY_SELF") @map("created_by_type")
+
+  // ── Admin Controls ─────────────────────────────────────────
+  status            String        @default("INCOMPLETE")
+  isVerified        Boolean       @default(false)       @map("is_verified")
+  verifiedAt        DateTime?                           @map("verified_at")
+  verifiedByAdminId Int?                                @map("verified_by_admin_id")
+
+  // Matchmaker pins important client profiles to appear at top of their page
+  // Default 0 = no priority. Higher number = higher position.
+  profilePriority Int @default(0) @map("profile_priority")
+
+  // ── Basic Info ─────────────────────────────────────────────
+  firstName      String        @map("first_name")
+  lastName       String        @map("last_name")
+  gender         String
+  dateOfBirth    DateTime      @map("date_of_birth")
+  maritalStatus  String        @map("marital_status")
+
+  // Physical
+  height         Float?         // cm
+  weight         Float?         // kg
+  bodyType       String?        @map("body_type")
+  physicalStatus String         @default("NORMAL") @map("physical_status")
+  bloodGroup     String?        @map("blood_group")
+
+  // Religion & Language
+  religionId     Int?          @map("religion_id")
+  religion       Religion?     @relation("ProfileReligion",     fields: [religionId],     references: [id])
+  denomination   String?       // e.g. "Theravada", "Roman Catholic"
+  motherTongueId Int?          @map("mother_tongue_id")
+  motherTongue   MotherTongue? @relation("ProfileMotherTongue", fields: [motherTongueId], references: [id])
+
+  // Lifestyle
+  eatingHabits  String[]
+  smokingHabit  String?        @map("smoking_habit")
+  drinkingHabit String?        @map("drinking_habit")
+
+  // About (min 50 chars enforced at API/validation layer, not DB)
+  aboutMe String? @map("about_me")
+
+  // ── Education & Occupation ─────────────────────────────────
+  highestEducationId Int?              @map("highest_education_id")
+  highestEducation   Education?        @relation("ProfileEducation",  fields: [highestEducationId], references: [id])
+  employmentStatus   String?           @map("employment_status")
+  occupationId       Int?              @map("occupation_id")
+  occupation         Occupation?       @relation("ProfileOccupation", fields: [occupationId],       references: [id])
+  annualIncome       Float?            @map("annual_income")
+  currency           String?           // "LKR", "GBP" etc.
+
+  // ── Family ─────────────────────────────────────────────────
+  fatherName         String?     @map("father_name")
+  fatherOccupationId Int?        @map("father_occupation_id")
+  fatherOccupation   Occupation? @relation("FatherOccupation", fields: [fatherOccupationId], references: [id])
+  motherName         String?     @map("mother_name")
+  motherOccupationId Int?        @map("mother_occupation_id")
+  motherOccupation   Occupation? @relation("MotherOccupation", fields: [motherOccupationId], references: [id])
+  noOfBrothers       Int?        @map("no_of_brothers")
+  brothersMarried    Int?        @map("brothers_married")
+  noOfSisters        Int?        @map("no_of_sisters")
+  sistersMarried     Int?        @map("sisters_married")
+  aboutFamily        String?     @map("about_family")
+
+  // ── Location ───────────────────────────────────────────────
+  nativeCountryId    Int?     @map("native_country_id")
+  nativeCountry      Country? @relation("NativeCountry", fields: [nativeCountryId], references: [id])
+  nativeCountryState String?  @map("native_country_state")
+  nativeCountryCity  String?  @map("native_country_city")
+  countryLivingId    Int?     @map("country_living_id")
+  countryLiving      Country? @relation("CountryLiving", fields: [countryLivingId], references: [id])
+  countryLivingState String?  @map("country_living_state")
+  countryLivingCity  String?  @map("country_living_city")
+  citizenshipId      Int?     @map("citizenship_id")
+  citizenship        Country? @relation("Citizenship",   fields: [citizenshipId],   references: [id])
+  citizenshipState   String?  @map("citizenship_state")
+  citizenshipCity    String?  @map("citizenship_city")
+  grewUpInCountryIds Int[]    @map("grew_up_in_country_ids")
+
+
+  // ── Photos & Preferences ───────────────────────────────────
+  photos     ProfilePhoto[]
+  preference ProfilePreference?
+
+  // ── Matches & Views ─────────────────────────────────────────
+  sentMatches      Match[]       @relation("SentMatches")
+  receivedMatches  Match[]       @relation("ReceivedMatches")
+  viewedProfiles   ProfileView[] @relation("ViewerProfile")
+  viewedByProfiles ProfileView[] @relation("ViewedProfile")
+
+  // ── Chat ─────────────────────────────────────────────────
+  conversations ConversationParticipant[]
+  sentMessages  Message[]                 @relation("SentMessages")
+
+  // ── Hobbies & Interests ────────────────────────────────────
+  hobbies        String[]
+  favMusic       String[]  @map("fav_music")
+  favMusicOther  String?   @map("fav_music_other")
+  favSports      String[]  @map("fav_sports")
+  favSportsOther String?   @map("fav_sports_other")
+  favFood        String[]  @map("fav_food")
+
+  // ── Matchmaker profile extras ──────────────────────────────
+  referenceCode      String?  @unique @map("reference_code")
+  showPhoto          Boolean  @default(false) @map("show_photo")
+  showFullAge        Boolean  @default(false) @map("show_full_age")
+  showFirstName      Boolean  @default(false) @map("show_first_name")
+  contactMethods     String[] @map("contact_methods")
+  contactWhatsapp    String?  @map("contact_whatsapp")
+  contactPhone       String?  @map("contact_phone")
+  contactEmail       String?  @map("contact_email")
+  horoscopeAvailable Boolean  @default(false) @map("horoscope_available")
+  profileVisibility  String   @default("ACTIVE") @map("profile_visibility")
+
+  // ── Contact Requests (matchmaker) ────────────────────────
+  contactRequests MatchmakerContactRequest[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([status])
+  @@index([gender])
+  @@index([religionId])
+  @@index([countryLivingId])
+  @@index([matchMakerUserId])
+  @@index([referenceCode])
+  @@map("profiles")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PROFILE PHOTO
+// ────────────────────────────────────────────────────────────────
+
+model ProfilePhoto {
+  id        Int      @id @default(autoincrement())
+  profileId Int      @map("profile_id")
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  imageUrl  String   @map("image_url")
+  isPrimary Boolean  @default(false) @map("is_primary")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("profile_photos")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PROFILE PREFERENCE
+//  What this person is looking for in a partner
+// ────────────────────────────────────────────────────────────────
+
+model ProfilePreference {
+  id        Int     @id @default(autoincrement())
+  profileId Int     @unique @map("profile_id") // one per profile
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  // Age & Height
+  minAge    Int?   @map("min_age")
+  maxAge    Int?   @map("max_age")
+  minHeight Float? @map("min_height") // cm
+  maxHeight Float? @map("max_height") // cm
+
+  // Acceptable marital & physical statuses (arrays)
+  maritalStatus  String[]         @map("marital_status")
+  physicalStatus String[]         @map("physical_status")
+
+  // Religion & Language (multi-select arrays — no FK constraints)
+  religionIds    Int[] @map("religion_ids")
+  motherTongueIds Int[] @map("mother_tongue_ids")
+
+  // Education & Work
+  educationId Int?       @map("education_id")
+  education   Education? @relation("PreferredEducation", fields: [educationId], references: [id])
+  occupation  String?    // free text for now
+
+  // Location (multi-select arrays — no FK constraints)
+  citizenshipIds       Int[] @map("citizenship_ids")          // acceptable citizenships
+  countryLivingIds     Int[] @map("country_living_ids")       // acceptable countries partner lives in
+  grewUpInCountryIds   Int[] @map("grew_up_in_country_ids")   // acceptable grew-up-in countries
+
+  // Lifestyle
+  eatingHabits  String[]       @map("eating_habits")
+  smokingHabit  String?        @map("smoking_habit")
+  drinkingHabit String?        @map("drinking_habit")
+
+  // Income expectations
+  annualIncomeMin Float? @map("annual_income_min")
+  annualIncomeMax Float? @map("annual_income_max")
+
+  aboutPartner String? @map("about_partner")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@map("profile_preferences")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  MATCH  (match request between two profiles)
+// ────────────────────────────────────────────────────────────────
+
+model Match {
+  id         Int         @id @default(autoincrement())
+  senderId   Int         @map("sender_id")
+  sender     Profile     @relation("SentMatches",     fields: [senderId],   references: [id], onDelete: Cascade)
+  receiverId Int         @map("receiver_id")
+  receiver   Profile     @relation("ReceivedMatches", fields: [receiverId], references: [id], onDelete: Cascade)
+  status     String  @default("PENDING") // PENDING | ACCEPTED | DECLINED
+  message    String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  conversation Conversation?
+
+  @@unique([senderId, receiverId])
+  @@index([receiverId, status])
+  @@map("matches")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PROFILE VIEW  (who viewed whose profile)
+// ────────────────────────────────────────────────────────────────
+
+model ProfileView {
+  id       Int      @id @default(autoincrement())
+  viewerId Int      @map("viewer_id")
+  viewer   Profile  @relation("ViewerProfile", fields: [viewerId], references: [id], onDelete: Cascade)
+  viewedId Int      @map("viewed_id")
+  viewed   Profile  @relation("ViewedProfile", fields: [viewedId], references: [id], onDelete: Cascade)
+  viewedAt DateTime @default(now()) @map("viewed_at")
+
+  @@unique([viewerId, viewedId])
+  @@index([viewedId])
+  @@map("profile_views")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  CHAT / MESSAGING
+// ────────────────────────────────────────────────────────────────
+
+model Conversation {
+  id           Int                      @id @default(autoincrement())
+  matchId      Int?                     @unique @map("match_id")
+  match        Match?                   @relation(fields: [matchId], references: [id], onDelete: SetNull)
+  participants ConversationParticipant[]
+  messages     Message[]
+  createdAt    DateTime                 @default(now()) @map("created_at")
+  updatedAt    DateTime                 @updatedAt @map("updated_at")
+
+  @@map("conversations")
+}
+
+model ConversationParticipant {
+  id             Int          @id @default(autoincrement())
+  conversationId Int          @map("conversation_id")
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  profileId      Int          @map("profile_id")
+  profile        Profile      @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  lastReadAt     DateTime?    @map("last_read_at")
+  joinedAt       DateTime     @default(now()) @map("joined_at")
+
+  @@unique([conversationId, profileId])
+  @@map("conversation_participants")
+}
+
+model Message {
+  id             Int          @id @default(autoincrement())
+  conversationId Int          @map("conversation_id")
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       Int          @map("sender_id")
+  sender         Profile      @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  content        String
+  messageType    String       @default("TEXT") @map("message_type")
+  isDeleted      Boolean      @default(false) @map("is_deleted")
+  readAt         DateTime?    @map("read_at")
+  createdAt      DateTime     @default(now()) @map("created_at")
+  editedAt       DateTime?    @map("edited_at")
+
+  @@index([conversationId, createdAt])
+  @@map("messages")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  SAVED SEARCH
+// ────────────────────────────────────────────────────────────────
+model SavedSearch {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String   @db.VarChar(10)
+  filters   Json
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([userId])
+  @@map("saved_searches")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  MATCHMAKER CONTACT REQUEST
+// ────────────────────────────────────────────────────────────────
+
+model MatchmakerContactRequest {
+  id             Int                  @id @default(autoincrement())
+  profileId      Int                  @map("profile_id")
+  profile        Profile              @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  requesterName  String               @map("requester_name")
+  requesterEmail String?              @map("requester_email")
+  requesterPhone String?              @map("requester_phone")
+  message        String
+  status         String               @default("NEW")
+  createdAt      DateTime             @default(now()) @map("created_at")
+  updatedAt      DateTime             @updatedAt      @map("updated_at")
+
+  @@index([profileId])
+  @@map("matchmaker_contact_requests")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  NOTIFICATION
+//  In-app notifications for users. Type examples:
+//    NEW_MATCH, PROFILE_VIEW, MESSAGE, INTEREST_RECEIVED,
+//    BOOKING_REQUEST, BOOKING_CONFIRMED, BOOKING_CANCELLED,
+//    MATCH_ACCEPTED, SYSTEM
+// ────────────────────────────────────────────────────────────────
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type      String   // NEW_MATCH | PROFILE_VIEW | MESSAGE | INTEREST_RECEIVED | BOOKING_REQUEST | BOOKING_CONFIRMED | BOOKING_CANCELLED | SYSTEM
+  title     String
+  body      String
+  link      String?  // optional deep link e.g. /dashboard/inbox/123
+  isRead    Boolean  @default(false) @map("is_read")
+  readAt    DateTime? @map("read_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  BOOKING
+//  A user or partner raises a booking request for a service.
+// ────────────────────────────────────────────────────────────────
+
+model Booking {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")          // the person making the booking
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  partnerId  Int      @map("partner_id")        // the service provider
+  partner    Partner  @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  serviceType  String  @map("service_type")    // PHOTOGRAPHER | VENUE | MAKEUP_ARTIST …
+  eventDate    DateTime @map("event_date")
+  eventLocation String? @map("event_location")
+  guestCount   Int?    @map("guest_count")
+  budget       String?  // free-text e.g. "LKR 200,000"
+  notes        String? @db.Text
+
+  status    String @default("PENDING")  // PENDING | CONFIRMED | CANCELLED | COMPLETED
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([userId])
+  @@index([partnerId])
+  @@map("bookings")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  STATUS / ROLE LOOKUP TABLES  (replaces all former enums)
+// ────────────────────────────────────────────────────────────────
+
+model UserRoleOption {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // USER, PARTNER, ADMIN
+  label       String
+  description String?
+  sortOrder   Int     @default(0) @map("sort_order")
+
+  @@map("user_role_options")
+}
+
+model UserStatusOption {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // ACTIVE, INACTIVE, PENDING
+  label       String
+  description String?
+  sortOrder   Int     @default(0) @map("sort_order")
+
+  @@map("user_status_options")
+}
+
+model PartnerTypeOption {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // MATCHMAKER, PHOTOGRAPHER, VENUE, …
+  label       String
+  icon        String?
+  description String?
+  sortOrder   Int     @default(0) @map("sort_order")
+
+  @@map("partner_type_options")
+}
+
+model ProfileCreatedByOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // MY_SELF, DAUGHTER, SON, SIBLING, RELATIVE, FRIEND, MATCHMAKER
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("profile_created_by_options")
+}
+
+model ProfileStatusOption {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // INCOMPLETE, PENDING_VERIFICATION, VERIFIED, ACTIVE, INACTIVE
+  label       String
+  description String?
+  sortOrder   Int     @default(0) @map("sort_order")
+
+  @@map("profile_status_options")
+}
+
+model SubscriptionPlanOption {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // FREE, GOLD, DIAMOND, PLATINUM
+  label       String
+  description String?
+  sortOrder   Int     @default(0) @map("sort_order")
+
+  @@map("subscription_plan_options")
+}
+
+model RecordStatusOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // ACTIVE, INACTIVE
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("record_status_options")
+}
+
+model MatchStatusOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // PENDING, ACCEPTED, DECLINED
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("match_status_options")
+}
+
+model MessageTypeOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // TEXT, IMAGE, EMOJI
+  label     String
+  icon      String?
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("message_type_options")
+}
+
+model ContactRequestStatusOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // NEW, IN_PROGRESS, REPLIED, CLOSED
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("contact_request_status_options")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  INTERESTS & LIFESTYLE LOOKUP TABLES
+//  Shared by USER profiles AND matchmaker-created profiles
+// ────────────────────────────────────────────────────────────────
+
+model HobbyOption {
+  id            Int    @id @default(autoincrement())
+  value         String @unique  // e.g. ACTING, COOKING, READING
+  label         String          // Display label
+  category      String          // ARTS_CREATIVE | ADVENTURE_SPORTS | MIND_KNOWLEDGE | SOCIAL_CULTURE
+  categoryLabel String          @map("category_label")  // e.g. "Arts & Creative"
+  categoryEmoji String          @map("category_emoji")  // e.g. "🎨"
+  sortOrder     Int    @default(0) @map("sort_order")
+
+  @@map("hobby_options")
+}
+
+model MusicOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // e.g. BLUES, JAZZ, FILM_SONGS
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("music_options")
+}
+
+model SportOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // e.g. CRICKET, FOOTBALL, SWIMMING
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("sport_options")
+}
+
+model FoodOption {
+  id        Int    @id @default(autoincrement())
+  value     String @unique  // e.g. SRILANKAN, INDIAN, CHINESE
+  label     String
+  sortOrder Int    @default(0) @map("sort_order")
+
+  @@map("food_options")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  SUBSCRIPTION SYSTEM
+// ────────────────────────────────────────────────────────────────
+
+// Plans: FREE, GOLD, DIAMOND, PLATINUM
+model SubscriptionPlan {
+  id          Int     @id @default(autoincrement())
+  value       String  @unique  // FREE | GOLD | DIAMOND | PLATINUM
+  label       String
+  description String?
+  badge       String?          // e.g. "TOP SELLER", "BEST VALUE"
+  color       String  @default("#F4A435")  // accent colour for UI
+  sortOrder   Int     @default(0) @map("sort_order")
+  isActive    Boolean @default(true) @map("is_active")
+
+  prices        SubscriptionPlanPrice[]
+  features      PlanFeatureAssignment[]
+  subscriptions UserSubscription[]
+
+  @@map("subscription_plans")
+}
+
+// Pricing per plan per duration
+model SubscriptionPlanPrice {
+  id              Int    @id @default(autoincrement())
+  planId          Int    @map("plan_id")
+  plan            SubscriptionPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  durationMonths  Int    @map("duration_months")   // 3 | 6 | 12
+  priceAmount     Float  @map("price_amount")       // in LKR
+  originalPrice   Float? @map("original_price")     // before discount
+  discountPercent Int?   @map("discount_percent")
+
+  @@unique([planId, durationMonths])
+  @@map("subscription_plan_prices")
+}
+
+// Feature definitions (admin-managed)
+model SubscriptionFeature {
+  id          Int     @id @default(autoincrement())
+  key         String  @unique  // e.g. send_unlimited_messages
+  title       String
+  description String?
+  icon        String?          // emoji or icon name
+  // Who this feature applies to — comma-separated or single:
+  // INDIVIDUAL | MATCHMAKER | PHOTOGRAPHER | VENUE | CATERING | etc. | ALL
+  audience    String
+  sortOrder   Int     @default(0) @map("sort_order")
+  isActive    Boolean @default(true) @map("is_active")
+
+  planAssignments PlanFeatureAssignment[]
+
+  @@map("subscription_features")
+}
+
+// Which features belong to which plan (with included/excluded state)
+model PlanFeatureAssignment {
+  id        Int     @id @default(autoincrement())
+  planId    Int     @map("plan_id")
+  plan      SubscriptionPlan    @relation(fields: [planId], references: [id], onDelete: Cascade)
+  featureId Int     @map("feature_id")
+  feature   SubscriptionFeature @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  included  Boolean @default(true)   // false = shown as crossed-out/unavailable
+  quantity  String?                  // e.g. "40", "Unlimited", "3 Months"
+  note      String?                  // e.g. "per month", "(Unlimited for Accepted Matches)"
+  sortOrder Int     @default(0) @map("sort_order")
+
+  @@unique([planId, featureId])
+  @@map("plan_feature_assignments")
+}
+
+// Actual user subscription records
+model UserSubscription {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planId         Int      @map("plan_id")
+  plan           SubscriptionPlan @relation(fields: [planId], references: [id])
+  durationMonths Int      @map("duration_months")
+  priceAmount    Float    @map("price_amount")
+  currency       String   @default("LKR")
+  status         String   @default("ACTIVE")  // ACTIVE | EXPIRED | CANCELLED
+  startedAt      DateTime @default(now()) @map("started_at")
+  expiresAt      DateTime @map("expires_at")
+  paymentRef     String?  @map("payment_ref")
+  receiptImageUrl String? @map("receipt_image_url")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@index([userId, status])
+  @@map("user_subscriptions")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  MAKEUP ARTIST & BEAUTY — SERVICE-SPECIFIC MODELS
+// ────────────────────────────────────────────────────────────────
+
+model MakeupArtistProfile {
+  id        String  @id @default(uuid())
+  partnerId Int     @unique @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  // ── Professional ──
+  artistType       String   @default("freelance") @map("artist_type")
+  // "freelance" | "salon" | "team"
+  teamSize         Int?     @default(1) @map("team_size")
+  yearsExperience  Int?     @map("years_experience")
+  specialistBio    String?  @map("specialist_bio") @db.Text
+  brandsUsed       String[] @map("brands_used")
+  languages        String[] // ["Sinhala","Tamil","English"]
+
+  // ── Travel & Service Area ──
+  // JSON: [{ country: "Sri Lanka", cities: ["Colombo","Kandy"] }, ...]
+  serviceAreas      Json?    @map("service_areas")
+  homeService       Boolean  @default(false) @map("home_service")
+  travelIslandWide  Boolean  @default(false) @map("travel_island_wide")
+  outstationTravel  Boolean  @default(false) @map("outstation_travel")
+  travelFee         String?  @map("travel_fee")
+
+  // ── Booking Rules ──
+  advanceNoticeDays  Int?     @default(7)  @map("advance_notice_days")
+  depositRequired    Boolean  @default(false) @map("deposit_required")
+  depositPercent     Int?     @map("deposit_percent")
+  earlySurcharge     Boolean  @default(false) @map("early_surcharge")
+  earlySurchargeAmt  Decimal? @map("early_surcharge_amt") @db.Decimal(10, 2)
+  cancellationPolicy String?  @map("cancellation_policy") @db.Text
+
+  // ── Social ──
+  whatsapp  String?
+  instagram String?
+  facebook  String?
+  website   String?
+
+  // ── Analytics ──
+  totalViews  Int @default(0) @map("total_views")
+  totalShares Int @default(0) @map("total_shares")
+
+  // ── Search denorm fields (for future AI chatbot queries) ──
+  searchCountry  String?  @map("search_country")
+  searchCity     String?  @map("search_city")
+  searchPriceMin Decimal? @map("search_price_min") @db.Decimal(10, 2)
+  searchPriceMax Decimal? @map("search_price_max") @db.Decimal(10, 2)
+
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  packages           MakeupPackage[]
+  portfolioAlbums    PortfolioAlbum[]
+  certifications     MakeupCertification[]
+  events             MakeupEvent[]
+  enquiries          MakeupEnquiry[]
+  profileViews       MakeupProfileView[]
+  availabilityBlocks AvailabilityBlock[]
+
+  @@index([searchCountry])
+  @@index([searchCity])
+  @@map("makeup_artist_profiles")
+}
+
+model MakeupCertification {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?
+  fileUrl     String  @map("file_url")
+  fileType    String  @map("file_type") // "pdf" | "image"
+  sortOrder   Int     @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([makeupArtistProfileId])
+  @@map("makeup_certifications")
+}
+
+model MakeupPackage {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  name           String
+  tagline        String?
+  description    String?  @db.Text
+  price          Decimal  @db.Decimal(10, 2)
+  currency       String   @default("LKR")
+  isNegotiable   Boolean  @default(false) @map("is_negotiable")
+  maxPersons     Int?     @default(1) @map("max_persons")
+  durationHours  Decimal? @map("duration_hours") @db.Decimal(4, 1)
+  validityNote   String?  @map("validity_note")
+  coverImageUrl  String?  @map("cover_image_url")
+  inclusions     String[]
+  exclusions     String[]
+  isFeatured     Boolean  @default(false) @map("is_featured")
+  isActive       Boolean  @default(true) @map("is_active")
+  sortOrder      Int      @default(0) @map("sort_order")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@index([makeupArtistProfileId])
+  @@map("makeup_packages")
+}
+
+model PortfolioAlbum {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  title       String
+  eventType   String?  @map("event_type")
+  // "kandyan_wedding"|"tamil_wedding"|"western_wedding"|"muslim_wedding"|
+  // "engagement"|"homecoming"|"mehendi_night"|"editorial"|"party"|"other"
+  eventDate   DateTime? @map("event_date")
+  location    String?
+  description String?   @db.Text
+
+  coverImageUrl String? @map("cover_image_url")
+  // JSON: [{ url: string, publicId: string }]
+  photos        Json?
+  // JSON: [{ url: string, title: string, thumbnail: string }]
+  youtubeLinks  Json?   @map("youtube_links")
+
+  styleTags  String[] @map("style_tags")
+  isPublic   Boolean  @default(true) @map("is_public")
+  isFeatured Boolean  @default(false) @map("is_featured")
+  sortOrder  Int      @default(0) @map("sort_order")
+  viewCount  Int      @default(0) @map("view_count")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  photoLikes PhotoLike[]
+
+  @@index([makeupArtistProfileId])
+  @@map("portfolio_albums")
+}
+
+model MakeupEvent {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  name           String
+  description    String?  @db.Text
+  bannerImageUrl String?  @map("banner_image_url")
+  // JSON: [{ url: string, publicId: string }]
+  photos         Json?
+  eventDate      DateTime? @map("event_date")
+  location       String?
+  isPublic       Boolean   @default(true) @map("is_public")
+  sortOrder      Int       @default(0) @map("sort_order")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  reviews    EventReview[]
+  photoLikes PhotoLike[]
+
+  @@index([makeupArtistProfileId])
+  @@map("makeup_events")
+}
+
+model EventReview {
+  id      String      @id @default(uuid())
+  eventId String      @map("event_id")
+  event   MakeupEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  userId       Int?    @map("user_id")
+  user         User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  reviewerName String  @map("reviewer_name")
+  rating       Int     // 1–5
+  comment      String? @db.Text
+  isApproved   Boolean @default(true) @map("is_approved")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([eventId])
+  @@map("event_reviews")
+}
+
+model PhotoLike {
+  id       String @id @default(uuid())
+  photoUrl String @map("photo_url")
+
+  albumId String? @map("album_id")
+  album   PortfolioAlbum? @relation(fields: [albumId], references: [id], onDelete: Cascade)
+
+  eventId String?     @map("event_id")
+  event   MakeupEvent? @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  userId    Int?    @map("user_id")
+  user      User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  ipAddress String? @map("ip_address")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([photoUrl, userId])
+  @@unique([photoUrl, ipAddress])
+  @@index([albumId])
+  @@index([eventId])
+  @@map("photo_likes")
+}
+
+model MakeupProfileView {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  userId    Int?    @map("user_id")
+  user      User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  ipAddress String? @map("ip_address")
+  viewedAt  DateTime @default(now()) @map("viewed_at")
+
+  @@index([makeupArtistProfileId])
+  @@map("makeup_profile_views")
+}
+
+model MakeupEnquiry {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  senderName    String   @map("sender_name")
+  senderPhone   String   @map("sender_phone")
+  senderEmail   String?  @map("sender_email")
+  description   String   @db.Text
+  eventType     String?  @map("event_type")
+  eventDate     DateTime? @map("event_date")
+  packageId     String?  @map("package_id")
+  numberOfPersons Int?   @default(1) @map("number_of_persons")
+
+  status    String   @default("NEW") // NEW | SEEN | REPLIED | CLOSED
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([makeupArtistProfileId, status])
+  @@map("makeup_enquiries")
+}
+
+model AvailabilityBlock {
+  id                    String              @id @default(uuid())
+  makeupArtistProfileId String              @map("makeup_artist_profile_id")
+  profile               MakeupArtistProfile @relation(fields: [makeupArtistProfileId], references: [id], onDelete: Cascade)
+
+  startDate   DateTime @map("start_date")
+  endDate     DateTime @map("end_date")
+  reason      String   @default("Booked")
+  // "Booked" | "Holiday" | "Personal" | "Other"
+  privateNote String?  @map("private_note")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([makeupArtistProfileId, startDate, endDate])
+  @@map("availability_blocks")
+}
