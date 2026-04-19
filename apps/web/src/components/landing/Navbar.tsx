@@ -203,8 +203,6 @@ const NAV_ITEMS = [
   { key: 'nav.about',          href: '/about'     },
   { key: 'nav.browseProfiles', href: '/browse'    },
   { key: 'nav.partners',       href: '/partners'  },
-  { key: 'nav.blog',           href: '/blog'      },
-  { key: 'nav.contact',        href: '/contact'   },
 ] as const;
 
 export default function Navbar() {
