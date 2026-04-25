@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { useAuthStore } from '@/store/authStore';
 import { apiGet } from '@/lib/auth';
 import toast from 'react-hot-toast';
+import InterestModal from '@/components/shared/InterestModal';
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
@@ -122,7 +123,7 @@ function SkeletonCard() {
 ───────────────────────────────────────────── */
 interface ProfileCardProps {
   profile: Profile;
-  onSendInterest: (id: number) => void;
+  onSendInterest: (profile: Profile) => void;
   sentIds: Set<number>;
 }
 
@@ -179,7 +180,7 @@ function ProfileCard({ profile: p, onSendInterest, sentIds }: ProfileCardProps) 
             View Profile
           </Link>
           <button
-            onClick={() => !isSent && onSendInterest(p.id)}
+            onClick={() => !isSent && onSendInterest(p)}
             disabled={isSent}
             className="flex-[1.4] py-2 rounded-xl text-xs font-semibold border cursor-pointer transition-all disabled:cursor-default"
             style={isSent
@@ -340,6 +341,8 @@ function BrowsePageInner() {
   const [showSaveModal,   setShowSaveModal]   = useState(false);
   const [savedSearchName, setSavedSearchName] = useState('');
   const [editingSearch,   setEditingSearch]   = useState<{ id: number; name: string } | null>(null);
+  const [interestTarget,  setInterestTarget]  = useState<Profile | null>(null);
+  const [interestSending, setInterestSending] = useState(false);
   // myGender stores THIS user's gender; oppositeGender is what we search for
   const [myGender,        setMyGender]        = useState('');
   const [oppositeGender,  setOppositeGender]  = useState('');
@@ -532,23 +535,31 @@ function BrowsePageInner() {
   }, [token]);
 
   /* ── Send interest ── */
-  async function sendInterest(receiverId: number) {
-    if (!token) return;
+  function openInterestModal(profile: Profile) {
+    setInterestTarget(profile);
+  }
+
+  async function confirmSendInterest(message: string) {
+    if (!token || !interestTarget) return;
+    setInterestSending(true);
     try {
       const res = await fetch(`${API}/api/matches`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ receiverId }),
+        body: JSON.stringify({ receiverId: interestTarget.id, message: message || undefined }),
       });
       if (res.ok) {
-        setSentIds(prev => new Set(prev).add(receiverId));
-        toast.success('Interest sent!');
+        setSentIds(prev => new Set(prev).add(interestTarget.id));
+        toast.success('Request sent! Check your inbox to see the conversation.');
+        setInterestTarget(null);
       } else {
         const d = await res.json();
         toast.error(d.message ?? 'Could not send interest');
       }
     } catch {
       toast.error('Network error');
+    } finally {
+      setInterestSending(false);
     }
   }
 
@@ -857,13 +868,23 @@ function BrowsePageInner() {
           {!loading && profiles.length > 0 && (
             <>
               <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))' }}>
-                {profiles.map(p => <ProfileCard key={p.id} profile={p} onSendInterest={sendInterest} sentIds={sentIds} />)}
+                {profiles.map(p => <ProfileCard key={p.id} profile={p} onSendInterest={openInterestModal} sentIds={sentIds} />)}
               </div>
               <Pagination page={page} pages={pages} onPage={p => handleSearch(p)} />
             </>
           )}
         </div>
       </div>
+
+      {/* ════════ INTEREST MESSAGE MODAL ════════ */}
+      {interestTarget && (
+        <InterestModal
+          recipientName={interestTarget.firstName}
+          onSend={confirmSendInterest}
+          onClose={() => setInterestTarget(null)}
+          loading={interestSending}
+        />
+      )}
 
       {/* ════════ SAVE SEARCH MODAL ════════ */}
       {showSaveModal && (

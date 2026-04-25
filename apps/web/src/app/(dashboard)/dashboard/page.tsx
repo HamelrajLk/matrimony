@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useAuthStore } from '@/store/authStore';
 import { apiGet } from '@/lib/auth';
+import InterestModal from '@/components/shared/InterestModal';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
@@ -114,19 +115,20 @@ function ProfileListCard({ p, token, receivedMatchId, onRespond }: {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [acting, setActing] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const photo = p.photos?.find(ph => ph.isPrimary)?.imageUrl ?? p.photos?.[0]?.imageUrl;
   const age   = p.dateOfBirth ? calcAge(p.dateOfBirth) : null;
 
-  async function sendInterest() {
+  async function sendInterest(message: string) {
     if (!token || sent || sending) return;
     setSending(true);
     try {
       const res = await fetch(`${API_URL}/api/matches`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ receiverId: p.id }),
+        body: JSON.stringify({ receiverId: p.id, message: message || undefined }),
       });
-      if (res.ok) setSent(true);
+      if (res.ok) { setSent(true); setShowModal(false); }
     } catch { /* silent */ } finally {
       setSending(false);
     }
@@ -139,7 +141,7 @@ function ProfileListCard({ p, token, receivedMatchId, onRespond }: {
       const res = await fetch(`${API_URL}/api/matches/${receivedMatchId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ status: action }),
+        body: JSON.stringify({ action }),
       });
       if (res.ok) onRespond?.(receivedMatchId, action);
     } catch { /* silent */ } finally {
@@ -260,7 +262,7 @@ function ProfileListCard({ p, token, receivedMatchId, onRespond }: {
           // Normal flow — send interest
           <>
             <button
-              onClick={sendInterest}
+              onClick={() => !sent && setShowModal(true)}
               disabled={sent || sending}
               className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold border-none cursor-pointer transition-all ${
                 sent
@@ -277,6 +279,15 @@ function ProfileListCard({ p, token, receivedMatchId, onRespond }: {
           </>
         )}
       </div>
+
+      {showModal && (
+        <InterestModal
+          recipientName={p.firstName}
+          onSend={sendInterest}
+          onClose={() => setShowModal(false)}
+          loading={sending}
+        />
+      )}
     </div>
   );
 }

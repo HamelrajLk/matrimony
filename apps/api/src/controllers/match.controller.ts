@@ -48,6 +48,31 @@ export async function sendMatchRequest(req: AuthRequest, res: Response) {
     const match = await (prisma.match as any).create({
       data: { senderId: myProfileId, receiverId, message: req.body.message || null },
     });
+
+    // Create conversation immediately so both parties can see it in their inbox
+    const conversation = await (prisma.conversation as any).create({
+      data: {
+        matchId: match.id,
+        participants: {
+          create: [
+            { profileId: myProfileId },
+            { profileId: receiverId },
+          ],
+        },
+      },
+    });
+
+    // First message: user's typed message or a default "request sent" notice
+    const firstMessageContent = (req.body.message || '').trim() || '💌 Connection request sent';
+    await (prisma.message as any).create({
+      data: {
+        conversationId: conversation.id,
+        senderId: myProfileId,
+        content: firstMessageContent,
+        messageType: 'TEXT',
+      },
+    });
+
     return res.status(201).json({ message: 'Match request sent', match });
   } catch (err) {
     console.error('[sendMatchRequest]', err);
@@ -73,6 +98,24 @@ export async function respondToMatch(req: AuthRequest, res: Response) {
     if (match.status !== 'PENDING') return res.status(400).json({ message: `Match already ${match.status.toLowerCase()}` });
 
     const updated = await (prisma.match as any).update({ where: { id: matchId }, data: { status: action } });
+
+    if (action === 'ACCEPTED') {
+      const existing = await (prisma.conversation as any).findFirst({ where: { matchId } });
+      if (!existing) {
+        await (prisma.conversation as any).create({
+          data: {
+            matchId,
+            participants: {
+              create: [
+                { profileId: match.senderId },
+                { profileId: match.receiverId },
+              ],
+            },
+          },
+        });
+      }
+    }
+
     return res.json({ message: `Match ${action.toLowerCase()}`, match: updated });
   } catch (err) {
     console.error('[respondToMatch]', err);

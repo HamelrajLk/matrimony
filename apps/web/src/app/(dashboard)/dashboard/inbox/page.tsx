@@ -606,13 +606,13 @@ export default function InboxPage() {
                 <div className="text-4xl mb-3">💬</div>
                 <p className="text-sm text-[#7A6A5A] font-medium">No conversations yet</p>
                 <p className="text-xs text-[#9A8A7A] mt-1">
-                  Accept a match request to start chatting
+                  Send a connection request to start a conversation
                 </p>
                 <Link
-                  href="/dashboard/matches"
+                  href="/dashboard/browse"
                   className="mt-4 text-xs text-[#E8735A] font-semibold no-underline hover:underline"
                 >
-                  View Matches →
+                  Browse Profiles →
                 </Link>
               </div>
             ) : (

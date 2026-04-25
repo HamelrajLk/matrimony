@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuthStore } from '@/store/authStore';
 import { apiGet } from '@/lib/auth';
+import InterestModal from '@/components/shared/InterestModal';
 
 interface Profile {
   id: number; firstName: string; lastName: string; gender: string;
@@ -54,10 +55,12 @@ export default function ProfileDetailPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [photoIdx, setPhotoIdx] = useState(0);
-  const [requestSent,    setRequestSent]    = useState(false);
-  const [matchStatus,    setMatchStatus]    = useState<'NONE' | 'PENDING' | 'ACCEPTED' | 'DECLINED'>('NONE');
-  const [receivedMatchId, setReceivedMatchId] = useState<number | null>(null); // pending request FROM this person TO me
-  const [acting,         setActing]         = useState(false);
+  const [requestSent,      setRequestSent]      = useState(false);
+  const [matchStatus,      setMatchStatus]      = useState<'NONE' | 'PENDING' | 'ACCEPTED' | 'DECLINED'>('NONE');
+  const [receivedMatchId,  setReceivedMatchId]  = useState<number | null>(null);
+  const [acting,           setActing]           = useState(false);
+  const [showInterestModal, setShowInterestModal] = useState(false);
+  const [interestSending,  setInterestSending]  = useState(false);
 
   useEffect(() => {
     if (!token || !id) return;
@@ -100,7 +103,7 @@ export default function ProfileDetailPage() {
       const res = await fetch(`${API}/api/matches/${receivedMatchId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ status: action }),
+        body: JSON.stringify({ action }),
       });
       if (res.ok) {
         setMatchStatus(action === 'ACCEPTED' ? 'ACCEPTED' : 'DECLINED');
@@ -109,15 +112,24 @@ export default function ProfileDetailPage() {
     } catch {} finally { setActing(false); }
   }
 
-  async function sendRequest() {
+  async function confirmSendRequest(message: string) {
+    if (!token) return;
+    setInterestSending(true);
     try {
       const res = await fetch(`${API}/api/matches`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ receiverId: Number(id) }),
+        body: JSON.stringify({ receiverId: Number(id), message: message || undefined }),
       });
-      if (res.ok) { setRequestSent(true); setMatchStatus('PENDING'); }
-    } catch {}
+      if (res.ok) {
+        setRequestSent(true);
+        setMatchStatus('PENDING');
+        setShowInterestModal(false);
+        router.push('/dashboard/inbox');
+      }
+    } catch {} finally {
+      setInterestSending(false);
+    }
   }
 
   if (loading) return <div style={{ textAlign: 'center', padding: 80, color: '#9A8A7A', fontFamily: "'Outfit',sans-serif" }}>Loading profile…</div>;
@@ -164,7 +176,12 @@ export default function ProfileDetailPage() {
                 </div>
               </div>
               {matchStatus === 'ACCEPTED' ? (
-                <span style={{ background: '#E8F8F5', color: '#4ABEAA', borderRadius: 50, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif" }}>💑 Connected</span>
+                <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+                  <span style={{ background: '#E8F8F5', color: '#4ABEAA', borderRadius: 50, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif" }}>💑 Connected</span>
+                  <Link href="/dashboard/inbox" style={{ background: 'linear-gradient(135deg,#F4A435,#E8735A)', color: 'white', borderRadius: 50, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif", textDecoration: 'none' }}>
+                    💬 Open Chat
+                  </Link>
+                </div>
               ) : receivedMatchId ? (
                 <div style={{ display: 'flex', gap: 8 }}>
                   <button onClick={() => respondToRequest('ACCEPTED')} disabled={acting} style={{ background: 'linear-gradient(135deg,#4ABEAA,#2A9D8F)', color: 'white', border: 'none', borderRadius: 50, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif", cursor: 'pointer', opacity: acting ? 0.7 : 1 }}>
@@ -179,9 +196,9 @@ export default function ProfileDetailPage() {
                   ⏳ Request Pending
                 </button>
               ) : matchStatus === 'DECLINED' ? (
-                <button onClick={sendRequest} className="btn-primary">💌 Send Again</button>
+                <button onClick={() => setShowInterestModal(true)} className="btn-primary">💌 Send Again</button>
               ) : (
-                <button onClick={sendRequest} className="btn-primary">💌 Send Connection Request</button>
+                <button onClick={() => setShowInterestModal(true)} className="btn-primary">💌 Send Connection Request</button>
               )}
             </div>
 
@@ -267,7 +284,12 @@ export default function ProfileDetailPage() {
 
       <div style={{ textAlign: 'center', padding: '24px 0' }}>
         {matchStatus === 'ACCEPTED' ? (
-          <span style={{ background: '#E8F8F5', color: '#4ABEAA', borderRadius: 50, padding: '14px 44px', fontSize: '0.95rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif", display: 'inline-block' }}>💑 Connected</span>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <span style={{ background: '#E8F8F5', color: '#4ABEAA', borderRadius: 50, padding: '14px 32px', fontSize: '0.95rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif", display: 'inline-block' }}>💑 Connected</span>
+            <Link href="/dashboard/inbox" style={{ background: 'linear-gradient(135deg,#F4A435,#E8735A)', color: 'white', borderRadius: 50, padding: '14px 32px', fontSize: '0.95rem', fontWeight: 700, fontFamily: "'Outfit',sans-serif", textDecoration: 'none', display: 'inline-block' }}>
+              💬 Open Chat
+            </Link>
+          </div>
         ) : receivedMatchId ? (
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', alignItems: 'center' }}>
             <p style={{ fontFamily: "'Outfit',sans-serif", fontSize: '0.88rem', color: '#7A6A5A', margin: 0 }}>This person sent you a connection request</p>
@@ -283,11 +305,20 @@ export default function ProfileDetailPage() {
             ⏳ Request Pending — Awaiting Response
           </button>
         ) : matchStatus === 'DECLINED' ? (
-          <button onClick={sendRequest} className="btn-primary" style={{ padding: '14px 44px', fontSize: '0.95rem' }}>💌 Send Again</button>
+          <button onClick={() => setShowInterestModal(true)} className="btn-primary" style={{ padding: '14px 44px', fontSize: '0.95rem' }}>💌 Send Again</button>
         ) : (
-          <button onClick={sendRequest} className="btn-primary" style={{ padding: '14px 44px', fontSize: '0.95rem' }}>💌 Send Connection Request</button>
+          <button onClick={() => setShowInterestModal(true)} className="btn-primary" style={{ padding: '14px 44px', fontSize: '0.95rem' }}>💌 Send Connection Request</button>
         )}
       </div>
+
+      {showInterestModal && profile && (
+        <InterestModal
+          recipientName={profile.firstName}
+          onSend={confirmSendRequest}
+          onClose={() => setShowInterestModal(false)}
+          loading={interestSending}
+        />
+      )}
     </div>
   );
 }
