@@ -444,7 +444,16 @@ export const ModelName = {
   PhotoLike: 'PhotoLike',
   MakeupProfileView: 'MakeupProfileView',
   MakeupEnquiry: 'MakeupEnquiry',
-  AvailabilityBlock: 'AvailabilityBlock'
+  AvailabilityBlock: 'AvailabilityBlock',
+  PhotographyPackage: 'PhotographyPackage',
+  PhotographyPhoto: 'PhotographyPhoto',
+  PhotographyEvent: 'PhotographyEvent',
+  PhotographyEventPhoto: 'PhotographyEventPhoto',
+  PartnerPackage: 'PartnerPackage',
+  PartnerProduct: 'PartnerProduct',
+  PartnerAlbumPhoto: 'PartnerAlbumPhoto',
+  PartnerServiceEvent: 'PartnerServiceEvent',
+  PartnerServiceEventPhoto: 'PartnerServiceEventPhoto'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -460,7 +469,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "country" | "religion" | "motherTongue" | "education" | "bodyTypeOption" | "maritalStatusOption" | "genderOption" | "physicalStatusOption" | "smokingHabitOption" | "drinkingHabitOption" | "eatingHabitOption" | "employmentStatusOption" | "occupationGroup" | "occupation" | "user" | "partner" | "matchmakerSuccessStory" | "partnerTypeAssignment" | "partnerAddress" | "partnerPhone" | "profile" | "profilePhoto" | "profilePreference" | "match" | "profileView" | "conversation" | "conversationParticipant" | "message" | "savedSearch" | "matchmakerContactRequest" | "notification" | "booking" | "userRoleOption" | "userStatusOption" | "partnerTypeOption" | "profileCreatedByOption" | "profileStatusOption" | "subscriptionPlanOption" | "recordStatusOption" | "matchStatusOption" | "messageTypeOption" | "contactRequestStatusOption" | "hobbyOption" | "musicOption" | "sportOption" | "foodOption" | "subscriptionPlan" | "subscriptionPlanPrice" | "subscriptionFeature" | "planFeatureAssignment" | "userSubscription" | "makeupArtistProfile" | "makeupCertification" | "makeupPackage" | "portfolioAlbum" | "makeupEvent" | "eventReview" | "photoLike" | "makeupProfileView" | "makeupEnquiry" | "availabilityBlock"
+    modelProps: "country" | "religion" | "motherTongue" | "education" | "bodyTypeOption" | "maritalStatusOption" | "genderOption" | "physicalStatusOption" | "smokingHabitOption" | "drinkingHabitOption" | "eatingHabitOption" | "employmentStatusOption" | "occupationGroup" | "occupation" | "user" | "partner" | "matchmakerSuccessStory" | "partnerTypeAssignment" | "partnerAddress" | "partnerPhone" | "profile" | "profilePhoto" | "profilePreference" | "match" | "profileView" | "conversation" | "conversationParticipant" | "message" | "savedSearch" | "matchmakerContactRequest" | "notification" | "booking" | "userRoleOption" | "userStatusOption" | "partnerTypeOption" | "profileCreatedByOption" | "profileStatusOption" | "subscriptionPlanOption" | "recordStatusOption" | "matchStatusOption" | "messageTypeOption" | "contactRequestStatusOption" | "hobbyOption" | "musicOption" | "sportOption" | "foodOption" | "subscriptionPlan" | "subscriptionPlanPrice" | "subscriptionFeature" | "planFeatureAssignment" | "userSubscription" | "makeupArtistProfile" | "makeupCertification" | "makeupPackage" | "portfolioAlbum" | "makeupEvent" | "eventReview" | "photoLike" | "makeupProfileView" | "makeupEnquiry" | "availabilityBlock" | "photographyPackage" | "photographyPhoto" | "photographyEvent" | "photographyEventPhoto" | "partnerPackage" | "partnerProduct" | "partnerAlbumPhoto" | "partnerServiceEvent" | "partnerServiceEventPhoto"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4978,6 +4987,672 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PhotographyPackage: {
+      payload: Prisma.$PhotographyPackagePayload<ExtArgs>
+      fields: Prisma.PhotographyPackageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PhotographyPackageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PhotographyPackageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        findFirst: {
+          args: Prisma.PhotographyPackageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PhotographyPackageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        findMany: {
+          args: Prisma.PhotographyPackageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>[]
+        }
+        create: {
+          args: Prisma.PhotographyPackageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        createMany: {
+          args: Prisma.PhotographyPackageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PhotographyPackageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>[]
+        }
+        delete: {
+          args: Prisma.PhotographyPackageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        update: {
+          args: Prisma.PhotographyPackageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        deleteMany: {
+          args: Prisma.PhotographyPackageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PhotographyPackageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PhotographyPackageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>[]
+        }
+        upsert: {
+          args: Prisma.PhotographyPackageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPackagePayload>
+        }
+        aggregate: {
+          args: Prisma.PhotographyPackageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePhotographyPackage>
+        }
+        groupBy: {
+          args: Prisma.PhotographyPackageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyPackageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PhotographyPackageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyPackageCountAggregateOutputType> | number
+        }
+      }
+    }
+    PhotographyPhoto: {
+      payload: Prisma.$PhotographyPhotoPayload<ExtArgs>
+      fields: Prisma.PhotographyPhotoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PhotographyPhotoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PhotographyPhotoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        findFirst: {
+          args: Prisma.PhotographyPhotoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PhotographyPhotoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        findMany: {
+          args: Prisma.PhotographyPhotoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>[]
+        }
+        create: {
+          args: Prisma.PhotographyPhotoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        createMany: {
+          args: Prisma.PhotographyPhotoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PhotographyPhotoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>[]
+        }
+        delete: {
+          args: Prisma.PhotographyPhotoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        update: {
+          args: Prisma.PhotographyPhotoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        deleteMany: {
+          args: Prisma.PhotographyPhotoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PhotographyPhotoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PhotographyPhotoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>[]
+        }
+        upsert: {
+          args: Prisma.PhotographyPhotoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyPhotoPayload>
+        }
+        aggregate: {
+          args: Prisma.PhotographyPhotoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePhotographyPhoto>
+        }
+        groupBy: {
+          args: Prisma.PhotographyPhotoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyPhotoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PhotographyPhotoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyPhotoCountAggregateOutputType> | number
+        }
+      }
+    }
+    PhotographyEvent: {
+      payload: Prisma.$PhotographyEventPayload<ExtArgs>
+      fields: Prisma.PhotographyEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PhotographyEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PhotographyEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        findFirst: {
+          args: Prisma.PhotographyEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PhotographyEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        findMany: {
+          args: Prisma.PhotographyEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>[]
+        }
+        create: {
+          args: Prisma.PhotographyEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        createMany: {
+          args: Prisma.PhotographyEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PhotographyEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>[]
+        }
+        delete: {
+          args: Prisma.PhotographyEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        update: {
+          args: Prisma.PhotographyEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.PhotographyEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PhotographyEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PhotographyEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.PhotographyEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPayload>
+        }
+        aggregate: {
+          args: Prisma.PhotographyEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePhotographyEvent>
+        }
+        groupBy: {
+          args: Prisma.PhotographyEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PhotographyEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    PhotographyEventPhoto: {
+      payload: Prisma.$PhotographyEventPhotoPayload<ExtArgs>
+      fields: Prisma.PhotographyEventPhotoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PhotographyEventPhotoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PhotographyEventPhotoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        findFirst: {
+          args: Prisma.PhotographyEventPhotoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PhotographyEventPhotoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        findMany: {
+          args: Prisma.PhotographyEventPhotoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>[]
+        }
+        create: {
+          args: Prisma.PhotographyEventPhotoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        createMany: {
+          args: Prisma.PhotographyEventPhotoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PhotographyEventPhotoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>[]
+        }
+        delete: {
+          args: Prisma.PhotographyEventPhotoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        update: {
+          args: Prisma.PhotographyEventPhotoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        deleteMany: {
+          args: Prisma.PhotographyEventPhotoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PhotographyEventPhotoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PhotographyEventPhotoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>[]
+        }
+        upsert: {
+          args: Prisma.PhotographyEventPhotoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotographyEventPhotoPayload>
+        }
+        aggregate: {
+          args: Prisma.PhotographyEventPhotoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePhotographyEventPhoto>
+        }
+        groupBy: {
+          args: Prisma.PhotographyEventPhotoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyEventPhotoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PhotographyEventPhotoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PhotographyEventPhotoCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerPackage: {
+      payload: Prisma.$PartnerPackagePayload<ExtArgs>
+      fields: Prisma.PartnerPackageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerPackageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerPackageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerPackageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerPackageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        findMany: {
+          args: Prisma.PartnerPackageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>[]
+        }
+        create: {
+          args: Prisma.PartnerPackageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        createMany: {
+          args: Prisma.PartnerPackageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerPackageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerPackageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        update: {
+          args: Prisma.PartnerPackageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerPackageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerPackageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerPackageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerPackageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerPackagePayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerPackageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerPackage>
+        }
+        groupBy: {
+          args: Prisma.PartnerPackageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerPackageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerPackageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerPackageCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerProduct: {
+      payload: Prisma.$PartnerProductPayload<ExtArgs>
+      fields: Prisma.PartnerProductFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerProductFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerProductFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerProductFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerProductFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerProductFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerProductCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerProductCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerProductCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerProductDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        update: {
+          args: Prisma.PartnerProductUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerProductDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerProductUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerProductUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerProductUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerProductPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerProductAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerProduct>
+        }
+        groupBy: {
+          args: Prisma.PartnerProductGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerProductGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerProductCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerProductCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerAlbumPhoto: {
+      payload: Prisma.$PartnerAlbumPhotoPayload<ExtArgs>
+      fields: Prisma.PartnerAlbumPhotoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerAlbumPhotoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerAlbumPhotoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerAlbumPhotoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerAlbumPhotoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerAlbumPhotoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerAlbumPhotoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerAlbumPhotoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerAlbumPhotoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerAlbumPhotoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        update: {
+          args: Prisma.PartnerAlbumPhotoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerAlbumPhotoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerAlbumPhotoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerAlbumPhotoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerAlbumPhotoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerAlbumPhotoPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerAlbumPhotoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerAlbumPhoto>
+        }
+        groupBy: {
+          args: Prisma.PartnerAlbumPhotoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerAlbumPhotoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerAlbumPhotoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerAlbumPhotoCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerServiceEvent: {
+      payload: Prisma.$PartnerServiceEventPayload<ExtArgs>
+      fields: Prisma.PartnerServiceEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerServiceEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerServiceEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerServiceEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerServiceEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerServiceEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerServiceEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerServiceEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerServiceEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerServiceEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        update: {
+          args: Prisma.PartnerServiceEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerServiceEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerServiceEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerServiceEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerServiceEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerServiceEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerServiceEvent>
+        }
+        groupBy: {
+          args: Prisma.PartnerServiceEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerServiceEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerServiceEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerServiceEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerServiceEventPhoto: {
+      payload: Prisma.$PartnerServiceEventPhotoPayload<ExtArgs>
+      fields: Prisma.PartnerServiceEventPhotoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerServiceEventPhotoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerServiceEventPhotoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerServiceEventPhotoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerServiceEventPhotoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerServiceEventPhotoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerServiceEventPhotoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerServiceEventPhotoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerServiceEventPhotoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerServiceEventPhotoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        update: {
+          args: Prisma.PartnerServiceEventPhotoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerServiceEventPhotoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerServiceEventPhotoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerServiceEventPhotoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerServiceEventPhotoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerServiceEventPhotoPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerServiceEventPhotoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerServiceEventPhoto>
+        }
+        groupBy: {
+          args: Prisma.PartnerServiceEventPhotoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerServiceEventPhotoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerServiceEventPhotoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerServiceEventPhotoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5924,6 +6599,133 @@ export const AvailabilityBlockScalarFieldEnum = {
 export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
 
 
+export const PhotographyPackageScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  photoCount: 'photoCount',
+  durationHours: 'durationHours',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PhotographyPackageScalarFieldEnum = (typeof PhotographyPackageScalarFieldEnum)[keyof typeof PhotographyPackageScalarFieldEnum]
+
+
+export const PhotographyPhotoScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  url: 'url',
+  caption: 'caption',
+  isFeatured: 'isFeatured',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type PhotographyPhotoScalarFieldEnum = (typeof PhotographyPhotoScalarFieldEnum)[keyof typeof PhotographyPhotoScalarFieldEnum]
+
+
+export const PhotographyEventScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  eventDate: 'eventDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PhotographyEventScalarFieldEnum = (typeof PhotographyEventScalarFieldEnum)[keyof typeof PhotographyEventScalarFieldEnum]
+
+
+export const PhotographyEventPhotoScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  url: 'url',
+  caption: 'caption',
+  createdAt: 'createdAt'
+} as const
+
+export type PhotographyEventPhotoScalarFieldEnum = (typeof PhotographyEventPhotoScalarFieldEnum)[keyof typeof PhotographyEventPhotoScalarFieldEnum]
+
+
+export const PartnerPackageScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  discountPercent: 'discountPercent',
+  salePrice: 'salePrice',
+  capacity: 'capacity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerPackageScalarFieldEnum = (typeof PartnerPackageScalarFieldEnum)[keyof typeof PartnerPackageScalarFieldEnum]
+
+
+export const PartnerProductScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  actualPrice: 'actualPrice',
+  discountPercent: 'discountPercent',
+  salePrice: 'salePrice',
+  isAvailable: 'isAvailable',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerProductScalarFieldEnum = (typeof PartnerProductScalarFieldEnum)[keyof typeof PartnerProductScalarFieldEnum]
+
+
+export const PartnerAlbumPhotoScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  url: 'url',
+  caption: 'caption',
+  isFeatured: 'isFeatured',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type PartnerAlbumPhotoScalarFieldEnum = (typeof PartnerAlbumPhotoScalarFieldEnum)[keyof typeof PartnerAlbumPhotoScalarFieldEnum]
+
+
+export const PartnerServiceEventScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  eventDate: 'eventDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerServiceEventScalarFieldEnum = (typeof PartnerServiceEventScalarFieldEnum)[keyof typeof PartnerServiceEventScalarFieldEnum]
+
+
+export const PartnerServiceEventPhotoScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  url: 'url',
+  caption: 'caption',
+  createdAt: 'createdAt'
+} as const
+
+export type PartnerServiceEventPhotoScalarFieldEnum = (typeof PartnerServiceEventPhotoScalarFieldEnum)[keyof typeof PartnerServiceEventPhotoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -6224,6 +7026,15 @@ export type GlobalOmitConfig = {
   makeupProfileView?: Prisma.MakeupProfileViewOmit
   makeupEnquiry?: Prisma.MakeupEnquiryOmit
   availabilityBlock?: Prisma.AvailabilityBlockOmit
+  photographyPackage?: Prisma.PhotographyPackageOmit
+  photographyPhoto?: Prisma.PhotographyPhotoOmit
+  photographyEvent?: Prisma.PhotographyEventOmit
+  photographyEventPhoto?: Prisma.PhotographyEventPhotoOmit
+  partnerPackage?: Prisma.PartnerPackageOmit
+  partnerProduct?: Prisma.PartnerProductOmit
+  partnerAlbumPhoto?: Prisma.PartnerAlbumPhotoOmit
+  partnerServiceEvent?: Prisma.PartnerServiceEventOmit
+  partnerServiceEventPhoto?: Prisma.PartnerServiceEventPhotoOmit
 }
 
 /* Types for Logging */

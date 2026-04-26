@@ -6,6 +6,49 @@ import api from '@/lib/api';
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+// Slug path per service type (undefined = no dedicated dashboard yet)
+const SERVICE_SLUG: Record<string, string | undefined> = {
+  PHOTOGRAPHER:  'photographer',
+  VENUE:         'venue',
+  CATERING:      'catering',
+  MAKEUP_ARTIST: 'makeup-artist',
+  FLORIST:       'florist',
+  DJ_MUSIC:      'dj-music',
+  CAKE_DESIGNER: 'cake-designer',
+  JEWELLERY:     'jewellery',
+  MEHENDI:       'mehendi',
+};
+
+// Which content types to show in preview per service
+const SERVICE_SHOWS: Record<string, { packages: boolean; products: boolean }> = {
+  PHOTOGRAPHER:  { packages: true,  products: false },
+  VENUE:         { packages: true,  products: false },
+  CATERING:      { packages: true,  products: true  },
+  MAKEUP_ARTIST: { packages: true,  products: false },
+  FLORIST:       { packages: true,  products: true  },
+  DJ_MUSIC:      { packages: true,  products: false },
+  CAKE_DESIGNER: { packages: true,  products: true  },
+  JEWELLERY:     { packages: true,  products: true  },
+  MEHENDI:       { packages: false, products: true  },
+};
+
+// Services that use their own dedicated API routes instead of the shared partner-content routes
+const SERVICE_API_OVERRIDE: Record<string, { packagesPath: string }> = {
+  PHOTOGRAPHER: { packagesPath: '/api/photographer/packages' },
+};
+
+interface PreviewItem {
+  id: number;
+  name: string;
+  description?: string | null;
+  price?: string | number | null;   // packages: price field
+  actualPrice?: string | number | null; // products: actualPrice
+  discountPercent?: number | null;
+  salePrice?: string | number | null;
+  imageUrl?: string | null;
+  kind: 'package' | 'product';
+}
+
 interface MatchmakerStats {
   totalProfiles: number;
   activeProfiles: number;
@@ -84,18 +127,202 @@ function SectionTitle({ icon, label, color }: { icon: string; label: string; col
   );
 }
 
-function ComingSoonSection({ color, icon, label }: { color: string; icon: string; label: string }) {
+function PriceTag({ item }: { item: PreviewItem }) {
+  const base = Number(item.price ?? item.actualPrice ?? 0);
+  const disc = item.discountPercent;
+  const sale = item.salePrice != null ? Number(item.salePrice) : null;
+
+  if (disc && disc > 0) {
+    const final = Math.round(base * (1 - disc / 100));
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+        <span style={{ fontWeight: 700, color: '#2A1A1A', fontSize: '0.9rem' }}>LKR {final.toLocaleString()}</span>
+        <span style={{ fontSize: '0.75rem', color: '#9A8A7A', textDecoration: 'line-through' }}>LKR {base.toLocaleString()}</span>
+        <span style={{ fontSize: '0.7rem', background: '#4ABEAA18', color: '#4ABEAA', fontWeight: 700, borderRadius: 20, padding: '1px 7px' }}>{disc}% off</span>
+      </div>
+    );
+  }
+  if (sale != null && sale > 0) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontWeight: 700, color: '#2A1A1A', fontSize: '0.9rem' }}>LKR {sale.toLocaleString()}</span>
+        <span style={{ fontSize: '0.75rem', color: '#9A8A7A', textDecoration: 'line-through' }}>LKR {base.toLocaleString()}</span>
+      </div>
+    );
+  }
+  return <span style={{ fontWeight: 700, color: '#2A1A1A', fontSize: '0.9rem' }}>LKR {base.toLocaleString()}</span>;
+}
+
+function ServicePreviewSection({
+  serviceType, color, icon, label, token,
+}: { serviceType: string; color: string; icon: string; label: string; token: string | null }) {
+  const slug = SERVICE_SLUG[serviceType];
+  const shows = SERVICE_SHOWS[serviceType] ?? { packages: true, products: false };
+  const dashboardHref = slug ? `/partners/dashboard/${slug}` : null;
+
+  const [items, setItems] = useState<PreviewItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!token) { setLoading(false); return; }
+    const headers = { Authorization: `Bearer ${token}` };
+    const qs = `?serviceType=${encodeURIComponent(serviceType)}`;
+    const override = SERVICE_API_OVERRIDE[serviceType];
+    const fetches: Promise<PreviewItem[]>[] = [];
+
+    if (shows.packages) {
+      // Use dedicated route if available, otherwise shared route with serviceType param
+      const packagesUrl = override
+        ? `${API}${override.packagesPath}`
+        : `${API}/api/partner-content/packages${qs}`;
+      fetches.push(
+        fetch(packagesUrl, { headers })
+          .then(r => r.ok ? r.json() : { packages: [] })
+          .then(d => (d.packages ?? []).slice(0, 5).map((p: Record<string, unknown>) => ({
+            id: p.id as number, name: p.name as string,
+            description: p.description as string | null,
+            price: p.price, discountPercent: p.discountPercent as number | null,
+            salePrice: p.salePrice, imageUrl: null, kind: 'package' as const,
+          })))
+          .catch(() => [])
+      );
+    }
+    if (shows.products) {
+      fetches.push(
+        fetch(`${API}/api/partner-content/products${qs}`, { headers })
+          .then(r => r.ok ? r.json() : { products: [] })
+          .then(d => (d.products ?? []).slice(0, 5).map((p: Record<string, unknown>) => ({
+            id: p.id as number, name: p.name as string,
+            description: p.description as string | null,
+            actualPrice: p.actualPrice,
+            discountPercent: p.discountPercent as number | null,
+            salePrice: p.salePrice, imageUrl: p.imageUrl as string | null,
+            kind: 'product' as const,
+          })))
+          .catch(() => [])
+      );
+    }
+
+    Promise.all(fetches)
+      .then(results => setItems(results.flat().slice(0, 10)))
+      .finally(() => setLoading(false));
+  }, [token, serviceType]);
+
+  // No dedicated dashboard yet — keep "Coming Soon"
+  if (!dashboardHref) {
+    return (
+      <div style={{ background: 'white', borderRadius: 20, border: `1.5px dashed ${color}40`, padding: '36px 28px', textAlign: 'center', marginBottom: 28 }}>
+        <SectionTitle icon={icon} label={label} color={color} />
+        <div style={{ fontSize: '3rem', marginBottom: 14 }}>🚧</div>
+        <div style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: '1.1rem', color: '#2A1A1A', marginBottom: 8 }}>
+          {label} Dashboard — Coming Soon
+        </div>
+        <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: '0.85rem', color: '#9A8A7A', maxWidth: 380, margin: '0 auto' }}>
+          We're building powerful tools for your {label.toLowerCase()} business. Stay tuned!
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ background: 'white', borderRadius: 20, border: `1.5px dashed ${color}40`, padding: '36px 28px', textAlign: 'center', marginBottom: 28 }}>
-      <SectionTitle icon={icon} label={label} color={color} />
-      <div style={{ fontSize: '3rem', marginBottom: 14 }}>🚧</div>
-      <div style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: '1.1rem', color: '#2A1A1A', marginBottom: 8 }}>
-        {label} Dashboard — Coming Soon
+    <div style={{ background: 'white', borderRadius: 20, border: '1px solid #F0E4D0', padding: '24px 26px', marginBottom: 28, boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+      {/* Header row */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 18, gap: 12 }}>
+        <SectionTitle icon={icon} label={label} color={color} />
+        <Link
+          href={dashboardHref}
+          style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 18px', borderRadius: 50, background: `${color}14`, border: `1.5px solid ${color}40`, color, fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: '0.8rem', textDecoration: 'none', whiteSpace: 'nowrap' }}
+        >
+          Manage →
+        </Link>
       </div>
-      <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: '0.85rem', color: '#9A8A7A', marginBottom: 20, maxWidth: 380, margin: '0 auto 20px' }}>
-        We're building powerful tools for your {label.toLowerCase()} business. Stay tuned!
-      </div>
-      
+
+      {loading ? (
+        <div style={{ color: '#9A8A7A', fontSize: '0.84rem', fontFamily: "'Outfit',sans-serif", padding: '10px 0' }}>Loading…</div>
+      ) : items.length === 0 ? (
+        /* Empty state */
+        <div style={{ textAlign: 'center', padding: '24px 0 8px' }}>
+          <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>📭</div>
+          <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 600, fontSize: '0.9rem', color: '#2A1A1A', marginBottom: 4 }}>
+            No {shows.packages && shows.products ? 'packages or products' : shows.packages ? 'packages' : 'products'} yet
+          </div>
+          <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: '0.8rem', color: '#9A8A7A', marginBottom: 16 }}>
+            Add your first listing so customers can see what you offer.
+          </div>
+          <Link
+            href={dashboardHref}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 50, background: `linear-gradient(135deg,${color},${color}CC)`, color: '#fff', fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none' }}
+          >
+            ➕ Add {shows.packages ? 'Package' : 'Product'}
+          </Link>
+        </div>
+      ) : (
+        <>
+          {/* Item grid — each card links to the service dashboard */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 18 }}>
+            {items.map(item => (
+              <Link
+                key={`${item.kind}-${item.id}`}
+                href={dashboardHref}
+                style={{ textDecoration: 'none', borderRadius: 14, border: `1.5px solid ${color}30`, overflow: 'hidden', background: 'white', display: 'flex', flexDirection: 'column', transition: 'transform 0.15s, box-shadow 0.15s, border-color 0.15s', boxShadow: '0 1px 6px rgba(0,0,0,0.04)', cursor: 'pointer' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'translateY(-3px)'; el.style.boxShadow = `0 8px 22px ${color}28`; el.style.borderColor = `${color}70`; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = ''; el.style.boxShadow = '0 1px 6px rgba(0,0,0,0.04)'; el.style.borderColor = `${color}30`; }}
+              >
+                {/* Product image */}
+                {item.imageUrl ? (
+                  <div style={{ width: '100%', height: 120, overflow: 'hidden', background: '#F5EFE8', position: 'relative' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                ) : (
+                  <div style={{ width: '100%', height: 64, background: `${color}0E`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem' }}>
+                    {icon}
+                  </div>
+                )}
+
+                <div style={{ padding: '10px 13px 13px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
+                  {/* Kind badge */}
+                  <span style={{ alignSelf: 'flex-start', fontSize: '0.6rem', fontWeight: 700, padding: '2px 8px', borderRadius: 20, background: `${color}15`, color, fontFamily: "'Outfit',sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {item.kind}
+                  </span>
+
+                  {/* Name */}
+                  <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: '0.88rem', color: '#2A1A1A', lineHeight: 1.35, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    {item.name}
+                  </div>
+
+                  {/* Description */}
+                  {item.description && (
+                    <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: '0.74rem', color: '#9A8A7A', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      {item.description}
+                    </div>
+                  )}
+
+                  {/* Price */}
+                  <div style={{ marginTop: 'auto', paddingTop: 6 }}>
+                    <PriceTag item={item} />
+                  </div>
+
+                  {/* Click hint */}
+                  <div style={{ fontSize: '0.7rem', color, fontWeight: 600, fontFamily: "'Outfit',sans-serif", marginTop: 2 }}>
+                    Manage →
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* View all button */}
+          <div style={{ textAlign: 'center' }}>
+            <Link
+              href={dashboardHref}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 26px', borderRadius: 50, border: `1.5px solid ${color}50`, color, fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', background: `${color}0A` }}
+            >
+              View All & Manage →
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -329,16 +556,18 @@ export default function PartnerDashboardHome() {
         <MatchmakerSection stats={stats} />
       )}
 
-      {/* Coming soon sections for all other services */}
+      {/* Service preview sections for all non-matchmaker services */}
       {comingSoonServices.map(service => {
         const cfg = SERVICE_CONFIG[service];
         if (!cfg) return null;
         return (
-          <ComingSoonSection
+          <ServicePreviewSection
             key={service}
+            serviceType={service}
             color={cfg.color}
             icon={cfg.icon}
             label={cfg.label}
+            token={token}
           />
         );
       })}

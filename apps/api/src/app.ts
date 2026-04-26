@@ -17,6 +17,8 @@ import matchmakerRoutes from './routes/matchmaker.routes'
 import notificationRoutes from './routes/notification.routes'
 import subscriptionRoutes from './routes/subscription.routes'
 import paymentRoutes from './routes/payment.routes'
+import photographerRoutes from './routes/photographer.routes'
+import partnerContentRoutes from './routes/partnerContent.routes'
 
 const app = express()
 
@@ -65,6 +67,8 @@ app.use('/api/matchmaker',      matchmakerRoutes)
 app.use('/api/notifications',   notificationRoutes)
 app.use('/api/subscriptions',  subscriptionRoutes)
 app.use('/api/payments',       paymentRoutes)
+app.use('/api/photographer',   photographerRoutes)
+app.use('/api/partner-content', partnerContentRoutes)
 
 // Health check
 app.get('/health', (_, res) => res.json({ status: 'ok' }))

@@ -24,7 +24,7 @@ export default function HeroSection() {
       style={{
         minHeight: '100vh',
         background:
-          'linear-gradient(145deg,#FF7E5F 0%,#FEB47B 22%,#FF6EB4 50%,#A78BFA 75%,#60C8F0 100%)',
+          'linear-gradient(145deg,#FF7E5F 0%,#FEB47B 22%,#FF6EB4 50%,#C97BE8 75%,#FF8E9E 100%)',
         backgroundSize: '300% 300%',
         animation: 'gradShift 12s ease infinite',
         position: 'relative',

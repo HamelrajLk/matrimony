@@ -44,96 +44,96 @@ function SkeletonCard() {
 
 function PartnerCard({ p, color, gradient, typeKey }: { p: DBPartner; color: string; gradient: string; typeKey: string }) {
   const location = p.addresses[0]
-    ? `${p.addresses[0].city}${p.addresses[0].countryCode ? ', ' + p.addresses[0].countryCode : ''}`
-    : null;
+    ? [p.addresses[0].city, p.addresses[0].countryCode].filter(Boolean).join(', ')
+    : 'Sri Lanka';
+  const hasLogo = !!p.logoImage;
 
   return (
     <Link href={`/partners/${typeKey}/${p.id}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
       <div
         style={{
           background: 'white', borderRadius: 20, overflow: 'hidden',
-          border: '1px solid #F0E4D0', boxShadow: '0 4px 16px rgba(0,0,0,0.05)',
-          transition: 'transform .2s, box-shadow .2s', cursor: 'pointer', height: '100%',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.05)',
+          transition: 'transform .22s, box-shadow .22s', cursor: 'pointer', height: '100%',
           display: 'flex', flexDirection: 'column',
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-5px)';
-          (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 40px ${color}25`;
+          (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-6px)';
+          (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 48px ${color}28`;
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLDivElement).style.transform = '';
-          (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.05)';
+          (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
         }}
       >
-        {/* Banner / Logo */}
-        <div style={{ height: 110, background: p.bannerPath ? 'transparent' : gradient, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
-          {p.bannerPath ? (
-            <img src={p.bannerPath} alt={p.businessName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        {/* ── Logo strip ── */}
+        <div style={{ position: 'relative', height: 190, flexShrink: 0, background: gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+          {hasLogo ? (
+            <div style={{ width: 110, height: 110, borderRadius: 22, overflow: 'hidden', background: 'white', boxShadow: '0 6px 28px rgba(0,0,0,0.18)', padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src={p.logoImage!} alt={p.businessName} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 14 }} />
+            </div>
           ) : (
-            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {p.logoImage ? (
-                <img src={p.logoImage} alt={p.businessName} style={{ width: 60, height: 60, objectFit: 'contain', borderRadius: 12, background: 'rgba(255,255,255,0.8)', padding: 6 }} />
-              ) : (
-                <span style={{ fontSize: '2.6rem', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.12))' }}>🤝</span>
-              )}
+            <div style={{ width: 100, height: 100, borderRadius: 22, background: 'rgba(255,255,255,0.18)', border: '2px solid rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3.8rem' }}>
+              🤝
             </div>
           )}
+
           {p.isVerified && (
             <span style={{
-              position: 'absolute', top: 10, right: 10,
-              background: '#4ABEAA', color: 'white', borderRadius: 20,
-              padding: '2px 8px', fontSize: 9, fontWeight: 700,
-              fontFamily: "'Outfit',sans-serif",
+              position: 'absolute', top: 12, right: 12,
+              background: '#4ABEAA', color: 'white', borderRadius: 50,
+              padding: '4px 10px', fontSize: 10, fontWeight: 700,
+              fontFamily: "'Outfit',sans-serif", boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
             }}>✓ Verified</span>
-          )}
-          {p.bannerPath && p.logoImage && (
-            <div style={{
-              position: 'absolute', bottom: -20, left: 16,
-              width: 40, height: 40, borderRadius: 10, overflow: 'hidden',
-              border: '2px solid white', boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              background: 'white',
-            }}>
-              <img src={p.logoImage} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
           )}
         </div>
 
-        <div style={{ padding: p.bannerPath && p.logoImage ? '28px 16px 18px' : '16px 16px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 15, color: '#2A1A1A', margin: '0 0 4px' }}>
+        {/* ── Info ── */}
+        <div style={{ padding: '16px 18px 18px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
+          <h3 style={{
+            fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 16,
+            color: '#1A0E0E', margin: 0, lineHeight: 1.3,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
+          }}>
             {p.businessName}
           </h3>
 
-          {location && (
-            <div style={{ fontSize: 12, color: '#9A8A7A', marginBottom: 8, fontFamily: "'Outfit',sans-serif" }}>📍 {location}</div>
-          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ fontSize: 12, color: '#9A8A7A', fontFamily: "'Outfit',sans-serif" }}>📍 {location}</span>
+            {p.yearsOfExperience != null && (
+              <>
+                <span style={{ color: '#D0C0B0', fontSize: 12 }}>·</span>
+                <span style={{ fontSize: 12, color, fontWeight: 700, fontFamily: "'Outfit',sans-serif" }}>{p.yearsOfExperience}+ yrs</span>
+              </>
+            )}
+          </div>
 
           {p.bio && (
             <p style={{
-              fontSize: 12, color: '#7A6A5A', lineHeight: 1.55,
-              margin: '0 0 10px', display: '-webkit-box',
-              WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
-              fontFamily: "'Outfit',sans-serif", flex: 1,
+              fontSize: 12, color: '#7A6A5A', lineHeight: 1.6, margin: 0, flex: 1,
+              fontFamily: "'Outfit',sans-serif",
+              display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
             }}>{p.bio}</p>
           )}
 
-          <div style={{ marginTop: 'auto', display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {p.yearsOfExperience != null && (
-              <span style={{ background: `${color}10`, color, borderRadius: 50, padding: '3px 10px', fontSize: 10, fontWeight: 600, border: `1px solid ${color}20`, fontFamily: "'Outfit',sans-serif" }}>
-                {p.yearsOfExperience}+ yrs exp
-              </span>
-            )}
-            {p.types.slice(0, 2).map(t => {
-              const info = getPartnerTypeInfo(t.type);
-              return info ? (
-                <span key={t.type} style={{ background: `${color}10`, color, borderRadius: 50, padding: '3px 10px', fontSize: 10, fontWeight: 600, border: `1px solid ${color}20`, fontFamily: "'Outfit',sans-serif" }}>
-                  {info.icon} {info.label}
-                </span>
-              ) : null;
-            })}
-          </div>
+          {/* Other service types */}
+          {p.types.length > 1 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 4 }}>
+              {p.types.slice(0, 3).map(t => {
+                const info = getPartnerTypeInfo(t.type);
+                return info ? (
+                  <span key={t.type} style={{ background: `${color}10`, color, borderRadius: 50, padding: '3px 10px', fontSize: 10, fontWeight: 600, border: `1px solid ${color}20`, fontFamily: "'Outfit',sans-serif" }}>
+                    {info.icon} {info.label}
+                  </span>
+                ) : null;
+              })}
+            </div>
+          )}
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingTop: 10, marginTop: 10, borderTop: '1px solid #F5EDE0' }}>
-            <span style={{ fontSize: 12, fontWeight: 700, color, fontFamily: "'Outfit',sans-serif" }}>View Profile →</span>
+          <div style={{ paddingTop: 10, marginTop: 'auto', borderTop: '1px solid #F5EDE0', display: 'flex', justifyContent: 'flex-end' }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color, fontFamily: "'Outfit',sans-serif", display: 'flex', alignItems: 'center', gap: 4 }}>
+              View Profile <span style={{ fontSize: 14 }}>→</span>
+            </span>
           </div>
         </div>
       </div>

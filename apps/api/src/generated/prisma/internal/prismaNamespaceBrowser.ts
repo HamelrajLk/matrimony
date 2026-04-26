@@ -111,7 +111,16 @@ export const ModelName = {
   PhotoLike: 'PhotoLike',
   MakeupProfileView: 'MakeupProfileView',
   MakeupEnquiry: 'MakeupEnquiry',
-  AvailabilityBlock: 'AvailabilityBlock'
+  AvailabilityBlock: 'AvailabilityBlock',
+  PhotographyPackage: 'PhotographyPackage',
+  PhotographyPhoto: 'PhotographyPhoto',
+  PhotographyEvent: 'PhotographyEvent',
+  PhotographyEventPhoto: 'PhotographyEventPhoto',
+  PartnerPackage: 'PartnerPackage',
+  PartnerProduct: 'PartnerProduct',
+  PartnerAlbumPhoto: 'PartnerAlbumPhoto',
+  PartnerServiceEvent: 'PartnerServiceEvent',
+  PartnerServiceEventPhoto: 'PartnerServiceEventPhoto'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1035,6 +1044,133 @@ export const AvailabilityBlockScalarFieldEnum = {
 } as const
 
 export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
+
+
+export const PhotographyPackageScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  photoCount: 'photoCount',
+  durationHours: 'durationHours',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PhotographyPackageScalarFieldEnum = (typeof PhotographyPackageScalarFieldEnum)[keyof typeof PhotographyPackageScalarFieldEnum]
+
+
+export const PhotographyPhotoScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  url: 'url',
+  caption: 'caption',
+  isFeatured: 'isFeatured',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type PhotographyPhotoScalarFieldEnum = (typeof PhotographyPhotoScalarFieldEnum)[keyof typeof PhotographyPhotoScalarFieldEnum]
+
+
+export const PhotographyEventScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  eventDate: 'eventDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PhotographyEventScalarFieldEnum = (typeof PhotographyEventScalarFieldEnum)[keyof typeof PhotographyEventScalarFieldEnum]
+
+
+export const PhotographyEventPhotoScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  url: 'url',
+  caption: 'caption',
+  createdAt: 'createdAt'
+} as const
+
+export type PhotographyEventPhotoScalarFieldEnum = (typeof PhotographyEventPhotoScalarFieldEnum)[keyof typeof PhotographyEventPhotoScalarFieldEnum]
+
+
+export const PartnerPackageScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  discountPercent: 'discountPercent',
+  salePrice: 'salePrice',
+  capacity: 'capacity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerPackageScalarFieldEnum = (typeof PartnerPackageScalarFieldEnum)[keyof typeof PartnerPackageScalarFieldEnum]
+
+
+export const PartnerProductScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  actualPrice: 'actualPrice',
+  discountPercent: 'discountPercent',
+  salePrice: 'salePrice',
+  isAvailable: 'isAvailable',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerProductScalarFieldEnum = (typeof PartnerProductScalarFieldEnum)[keyof typeof PartnerProductScalarFieldEnum]
+
+
+export const PartnerAlbumPhotoScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  url: 'url',
+  caption: 'caption',
+  isFeatured: 'isFeatured',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type PartnerAlbumPhotoScalarFieldEnum = (typeof PartnerAlbumPhotoScalarFieldEnum)[keyof typeof PartnerAlbumPhotoScalarFieldEnum]
+
+
+export const PartnerServiceEventScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  serviceType: 'serviceType',
+  name: 'name',
+  description: 'description',
+  eventDate: 'eventDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerServiceEventScalarFieldEnum = (typeof PartnerServiceEventScalarFieldEnum)[keyof typeof PartnerServiceEventScalarFieldEnum]
+
+
+export const PartnerServiceEventPhotoScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  url: 'url',
+  caption: 'caption',
+  createdAt: 'createdAt'
+} as const
+
+export type PartnerServiceEventPhotoScalarFieldEnum = (typeof PartnerServiceEventPhotoScalarFieldEnum)[keyof typeof PartnerServiceEventPhotoScalarFieldEnum]
 
 
 export const SortOrder = {

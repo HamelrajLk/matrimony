@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 // NAV_LINKS imported inline below with translation keys
 import { useAuthStore } from '@/store/authStore';
 import { logoutFromAPI } from '@/lib/auth';
@@ -206,8 +206,10 @@ const NAV_ITEMS = [
 ] as const;
 
 export default function Navbar() {
-  const [navSolid, setNavSolid] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  const [navSolid, setNavSolid] = useState(!isHomePage);
   const { isAuthenticated, _hasHydrated, token, clearAuth } = useAuthStore();
   const loggedIn = _hasHydrated && isAuthenticated;
   const { t } = useTranslation();
@@ -231,10 +233,11 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const fn = () => setNavSolid(window.scrollY > 60);
+    const fn = () => setNavSolid(!isHomePage || window.scrollY > 60);
+    fn();
     window.addEventListener('scroll', fn);
     return () => window.removeEventListener('scroll', fn);
-  }, []);
+  }, [isHomePage]);
 
   async function handleLogout() {
     try {
@@ -325,7 +328,7 @@ export default function Navbar() {
               {t(key)}
             </Link>
           ))}
-          <LanguageSwitcher variant={navSolid ? 'dark' : 'light'} />
+          {/* <LanguageSwitcher variant={navSolid ? 'dark' : 'light'} /> */}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginLeft: 8 }}>
             {loggedIn ? (
               <>

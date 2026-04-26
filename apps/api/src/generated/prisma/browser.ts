@@ -322,3 +322,48 @@ export type MakeupEnquiry = Prisma.MakeupEnquiryModel
  * 
  */
 export type AvailabilityBlock = Prisma.AvailabilityBlockModel
+/**
+ * Model PhotographyPackage
+ * 
+ */
+export type PhotographyPackage = Prisma.PhotographyPackageModel
+/**
+ * Model PhotographyPhoto
+ * 
+ */
+export type PhotographyPhoto = Prisma.PhotographyPhotoModel
+/**
+ * Model PhotographyEvent
+ * 
+ */
+export type PhotographyEvent = Prisma.PhotographyEventModel
+/**
+ * Model PhotographyEventPhoto
+ * 
+ */
+export type PhotographyEventPhoto = Prisma.PhotographyEventPhotoModel
+/**
+ * Model PartnerPackage
+ * 
+ */
+export type PartnerPackage = Prisma.PartnerPackageModel
+/**
+ * Model PartnerProduct
+ * 
+ */
+export type PartnerProduct = Prisma.PartnerProductModel
+/**
+ * Model PartnerAlbumPhoto
+ * 
+ */
+export type PartnerAlbumPhoto = Prisma.PartnerAlbumPhotoModel
+/**
+ * Model PartnerServiceEvent
+ * 
+ */
+export type PartnerServiceEvent = Prisma.PartnerServiceEventModel
+/**
+ * Model PartnerServiceEventPhoto
+ * 
+ */
+export type PartnerServiceEventPhoto = Prisma.PartnerServiceEventPhotoModel

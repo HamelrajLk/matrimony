@@ -11,24 +11,26 @@ const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 // All possible service tabs — shown only when the partner has that service type
 const SERVICE_TAB_MAP: Record<string, { label: string; icon: string; href: string }> = {
-  MATCHMAKER:    { label: 'Matchmaker',   icon: '💑', href: '/partners/dashboard/matchmaker' },
-  PHOTOGRAPHER:  { label: 'Photographer', icon: '📸', href: '/partners/dashboard/photographer' },
-  VIDEOGRAPHER:  { label: 'Videographer', icon: '🎬', href: '/partners/dashboard/videographer' },
-  VENUE:         { label: 'Venue',        icon: '🏛️', href: '/partners/dashboard/venue' },
-  CATERING:      { label: 'Catering',     icon: '🍽️', href: '/partners/dashboard/catering' },
-  MAKEUP_ARTIST: { label: 'Makeup Artist',icon: '💄', href: '/partners/dashboard/makeup-artist' },
-  FLORIST:       { label: 'Florist',      icon: '💐', href: '/partners/dashboard/florist' },
-  DJ_MUSIC:      { label: 'DJ / Music',   icon: '🎵', href: '/partners/dashboard/dj-music' },
-  CAKE_DESIGNER: { label: 'Cake Designer',icon: '🎂', href: '/partners/dashboard/cake-designer' },
-  TRANSPORT:     { label: 'Transport',    icon: '🚗', href: '/partners/dashboard/transport' },
-  OTHER:         { label: 'Other',        icon: '✨', href: '/partners/dashboard/other' },
+  MATCHMAKER:    { label: 'Matchmaker',    icon: '💑', href: '/partners/dashboard/matchmaker' },
+  PHOTOGRAPHER:  { label: 'Photographer',  icon: '📸', href: '/partners/dashboard/photographer' },
+  VIDEOGRAPHER:  { label: 'Videographer',  icon: '🎬', href: '/partners/dashboard/videographer' },
+  VENUE:         { label: 'Venue',         icon: '🏛️', href: '/partners/dashboard/venue' },
+  CATERING:      { label: 'Catering',      icon: '🍽️', href: '/partners/dashboard/catering' },
+  MAKEUP_ARTIST: { label: 'Makeup Artist', icon: '💄', href: '/partners/dashboard/makeup-artist' },
+  FLORIST:       { label: 'Florist',       icon: '💐', href: '/partners/dashboard/florist' },
+  DJ_MUSIC:      { label: 'DJ / Music',    icon: '🎵', href: '/partners/dashboard/dj-music' },
+  CAKE_DESIGNER: { label: 'Cake Designer', icon: '🎂', href: '/partners/dashboard/cake-designer' },
+  JEWELLERY:     { label: 'Jewellery',     icon: '💎', href: '/partners/dashboard/jewellery' },
+  MEHENDI:       { label: 'Mehendi',       icon: '🌿', href: '/partners/dashboard/mehendi' },
+  TRANSPORT:     { label: 'Transport',     icon: '🚗', href: '/partners/dashboard/transport' },
+  OTHER:         { label: 'Other',         icon: '✨', href: '/partners/dashboard/other' },
 };
 
 const DASHBOARD_TAB = { label: 'Dashboard', icon: '📊', href: '/partners/dashboard' };
 const BOOKINGS_TAB  = { label: 'Bookings',   icon: '📅', href: '/partners/dashboard/bookings' };
 
 // Service types that support bookings (matchmakers use inquiries/consultations, not bookings)
-const BOOKABLE_TYPES = new Set(['PHOTOGRAPHER', 'VIDEOGRAPHER', 'VENUE', 'CATERING', 'MAKEUP_ARTIST', 'FLORIST', 'DJ_MUSIC', 'CAKE_DESIGNER', 'TRANSPORT', 'OTHER']);
+const BOOKABLE_TYPES = new Set(['PHOTOGRAPHER', 'VIDEOGRAPHER', 'VENUE', 'CATERING', 'MAKEUP_ARTIST', 'FLORIST', 'DJ_MUSIC', 'CAKE_DESIGNER', 'JEWELLERY', 'MEHENDI', 'TRANSPORT', 'OTHER']);
 
 export default function PartnerDashboardLayout({ children }: { children: React.ReactNode }) {
   const router   = useRouter();

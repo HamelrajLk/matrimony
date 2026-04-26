@@ -15,7 +15,7 @@ export default function MarqueeBanner() {
   return (
     <div
       style={{
-        background: 'white',
+        background: '#FFFBF7',
         borderTop: '1px solid #F5EDE0',
         borderBottom: '1px solid #F5EDE0',
         padding: '15px 0',

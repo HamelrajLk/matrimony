@@ -42,7 +42,7 @@ export default function PartnersSection() {
   }, []);
 
   return (
-    <section style={{ background: 'white', padding: '100px 5%' }}>
+    <section style={{ background: '#FFF8F2', padding: '100px 5%' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <AnimIn>
           <div style={{ textAlign: 'center', marginBottom: 16 }}>

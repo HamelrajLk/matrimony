@@ -22,101 +22,115 @@ interface DBPartner {
   businessName: string;
   bio: string | null;
   logoImage: string | null;
+  bannerPath: string | null;
   yearsOfExperience: number | null;
   types: { type: string }[];
   addresses: { city: string; countryCode: string }[];
 }
 
 function PartnerCard({ p, color, gradient, icon, typeSlug }: {
-  p: DBPartner;
-  color: string;
-  gradient: string;
-  icon: string;
-  typeSlug: string;
+  p: DBPartner; color: string; gradient: string; icon: string; typeSlug: string;
 }) {
   const location = p.addresses[0]
     ? [p.addresses[0].city, p.addresses[0].countryCode].filter(Boolean).join(', ')
     : 'Sri Lanka';
+  const hasLogo = !!p.logoImage;
 
   return (
-    <Link href={`/partners/${typeSlug}/${p.id}`} style={{ textDecoration: 'none' }}>
+    <Link href={`/partners/${typeSlug}/${p.id}`} style={{ textDecoration: 'none', display: 'block' }}>
       <div
         style={{
-          background: 'white', borderRadius: 18, padding: '18px',
-          border: '1px solid #F0E4D0', boxShadow: '0 3px 14px rgba(0,0,0,0.05)',
-          transition: 'transform .2s, box-shadow .2s', cursor: 'pointer', height: '100%',
+          background: 'white', borderRadius: 20, overflow: 'hidden',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.05)',
+          transition: 'transform .22s, box-shadow .22s', cursor: 'pointer',
+          display: 'flex', flexDirection: 'column', height: '100%',
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
-          (e.currentTarget as HTMLDivElement).style.boxShadow = `0 14px 36px ${color}22`;
+          (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-6px)';
+          (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 48px ${color}28`;
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLDivElement).style.transform = '';
-          (e.currentTarget as HTMLDivElement).style.boxShadow = '0 3px 14px rgba(0,0,0,0.05)';
+          (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 13, marginBottom: 10 }}>
-          {/* Logo / avatar */}
-          <div style={{
-            width: 52, height: 52, borderRadius: 14, flexShrink: 0,
-            background: p.logoImage ? 'transparent' : `${color}15`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.5rem', border: `1.5px solid ${color}22`, overflow: 'hidden',
-          }}>
-            {p.logoImage
-              ? <img src={p.logoImage} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              : <span>{icon}</span>
-            }
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{
-              fontFamily: "'Playfair Display',serif", fontWeight: 700,
-              fontSize: 14, color: '#2A1A1A',
-              overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-            }}>
-              {p.businessName}
+        {/* ── Logo strip (always gradient bg + centered logo) ── */}
+        <div style={{ position: 'relative', height: 190, flexShrink: 0, overflow: 'hidden', background: gradient, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {hasLogo ? (
+            <div style={{ width: 110, height: 110, borderRadius: 22, overflow: 'hidden', background: 'white', boxShadow: '0 6px 28px rgba(0,0,0,0.18)', padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src={p.logoImage!} alt={p.businessName} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 14 }} />
             </div>
-            <div style={{ fontSize: 12, color: '#9A8A7A', marginTop: 2 }}>📍 {location}</div>
-          </div>
+          ) : (
+            <div style={{ width: 100, height: 100, borderRadius: 22, background: 'rgba(255,255,255,0.18)', border: '2px solid rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3.8rem' }}>
+              {icon}
+            </div>
+          )}
+
+          {/* Service type chip */}
+          {p.types[0] && (() => {
+            const tInfo = PARTNER_TYPES.find(pt => pt.type === p.types[0].type);
+            return tInfo ? (
+              <span style={{
+                position: 'absolute', top: 12, left: 12,
+                background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
+                color: '#2A1A1A', borderRadius: 50, padding: '4px 12px',
+                fontSize: 11, fontWeight: 700, fontFamily: "'Outfit',sans-serif",
+                boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+              }}>{tInfo.icon} {tInfo.label}</span>
+            ) : null;
+          })()}
         </div>
 
-        {/* Bio snippet */}
-        {p.bio && (
-          <p style={{
-            fontSize: 12, color: '#7A6A5A', lineHeight: 1.6, marginBottom: 10,
-            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
+        {/* ── Info ── */}
+        <div style={{ padding: '16px 16px 18px', flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <h3 style={{
+            fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 16,
+            color: '#1A0E0E', margin: 0, lineHeight: 1.3,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
           }}>
-            {p.bio}
-          </p>
-        )}
+            {p.businessName}
+          </h3>
 
-        {/* Type tags */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
-          {p.types.slice(0, 3).map(t => {
-            const tInfo = PARTNER_TYPES.find(pt => pt.type === t.type);
-            return (
-              <span key={t.type} style={{
-                background: `${color}10`, color, borderRadius: 50,
-                padding: '2px 9px', fontSize: 10, fontWeight: 600,
-                border: `1px solid ${color}20`,
-              }}>
-                {tInfo?.icon} {tInfo?.label ?? t.type}
-              </span>
-            );
-          })}
-        </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 12, color: '#9A8A7A', fontFamily: "'Outfit',sans-serif" }}>📍 {location}</span>
+            {p.yearsOfExperience != null && (
+              <>
+                <span style={{ color: '#D0C0B0', fontSize: 11 }}>·</span>
+                <span style={{ fontSize: 12, color, fontWeight: 700, fontFamily: "'Outfit',sans-serif" }}>{p.yearsOfExperience}+ yrs</span>
+              </>
+            )}
+          </div>
 
-        {/* Footer row */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {p.yearsOfExperience
-            ? <span style={{ fontSize: 12, color, fontWeight: 700 }}>{p.yearsOfExperience} yrs exp.</span>
-            : <span />
-          }
-          <span style={{
-            fontSize: 11, background: gradient, WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent', fontWeight: 700,
-          }}>View Profile →</span>
+          {p.bio && (
+            <p style={{
+              fontSize: 12, color: '#7A6A5A', lineHeight: 1.6, margin: 0, flex: 1,
+              fontFamily: "'Outfit',sans-serif",
+              display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
+            }}>{p.bio}</p>
+          )}
+
+          {/* CTA */}
+          <div style={{
+            marginTop: 'auto', paddingTop: 10, borderTop: '1px solid #F5EDE0',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
+              {p.types.slice(1, 3).map(t => {
+                const tInfo = PARTNER_TYPES.find(pt => pt.type === t.type);
+                return tInfo ? (
+                  <span key={t.type} style={{ fontSize: 10, background: `${color}12`, color, borderRadius: 50, padding: '2px 9px', fontWeight: 600, fontFamily: "'Outfit',sans-serif", border: `1px solid ${color}20` }}>
+                    {tInfo.icon} {tInfo.label}
+                  </span>
+                ) : null;
+              })}
+            </div>
+            <span style={{
+              fontSize: 12, fontWeight: 700, fontFamily: "'Outfit',sans-serif",
+              color, display: 'flex', alignItems: 'center', gap: 4, whiteSpace: 'nowrap',
+            }}>
+              View Profile <span style={{ fontSize: 14 }}>→</span>
+            </span>
+          </div>
         </div>
       </div>
     </Link>

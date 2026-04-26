@@ -303,6 +303,17 @@ model Partner {
   bookings       Booking[]
   makeupProfile  MakeupArtistProfile?
 
+  // ── Photography-specific ─────────────────────────────────────
+  photographyPackages PhotographyPackage[]
+  photographyPhotos   PhotographyPhoto[]
+  photographyEvents   PhotographyEvent[]
+
+  // ── Generic service content (makeup, florist, dj, etc.) ──────
+  servicePackages   PartnerPackage[]
+  serviceProducts   PartnerProduct[]
+  servicePhotos     PartnerAlbumPhoto[]
+  serviceEvents     PartnerServiceEvent[]
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt      @map("updated_at")
 
@@ -1295,4 +1306,170 @@ model AvailabilityBlock {
 
   @@index([makeupArtistProfileId, startDate, endDate])
   @@map("availability_blocks")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  PHOTOGRAPHY PARTNER MODELS
+// ────────────────────────────────────────────────────────────────
+
+model PhotographyPackage {
+  id          Int     @id @default(autoincrement())
+  partnerId   Int     @map("partner_id")
+  partner     Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  name          String
+  description   String? @db.Text
+  price         Decimal
+  photoCount    Int?    @map("photo_count")
+  durationHours Int?    @map("duration_hours")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([partnerId])
+  @@map("photography_packages")
+}
+
+model PhotographyPhoto {
+  id        Int     @id @default(autoincrement())
+  partnerId Int     @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  url        String
+  caption    String?
+  isFeatured Boolean @default(false) @map("is_featured")
+  sortOrder  Int     @default(0)     @map("sort_order")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([partnerId, isFeatured])
+  @@map("photography_photos")
+}
+
+model PhotographyEvent {
+  id        Int     @id @default(autoincrement())
+  partnerId Int     @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?  @db.Text
+  eventDate   DateTime @map("event_date")
+
+  photos PhotographyEventPhoto[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([partnerId, eventDate])
+  @@map("photography_events")
+}
+
+model PhotographyEventPhoto {
+  id      Int              @id @default(autoincrement())
+  eventId Int              @map("event_id")
+  event   PhotographyEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  url     String
+  caption String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([eventId])
+  @@map("photography_event_photos")
+}
+
+// ────────────────────────────────────────────────────────────────
+//  GENERIC SERVICE CONTENT (makeup, florist/decor, dj/entertainment)
+// ────────────────────────────────────────────────────────────────
+
+model PartnerPackage {
+  id           Int     @id @default(autoincrement())
+  partnerId    Int     @map("partner_id")
+  partner      Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  serviceType  String  @default("") @map("service_type") // MAKEUP_ARTIST | FLORIST | CATERING | VENUE | DJ_MUSIC | CAKE_DESIGNER | JEWELLERY | MEHENDI | …
+
+  name            String
+  description     String? @db.Text
+  price           Decimal
+  discountPercent Int?    @map("discount_percent")
+  salePrice       Decimal? @map("sale_price")
+  capacity        Int?    @map("guest_capacity")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([partnerId, serviceType])
+  @@map("partner_packages")
+}
+
+model PartnerProduct {
+  id        Int     @id @default(autoincrement())
+  partnerId Int     @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  serviceType String @default("") @map("service_type")
+
+  name            String
+  description     String?  @db.Text
+  imageUrl        String?  @map("image_url")
+  actualPrice     Decimal  @map("actual_price")
+  discountPercent Int?     @map("discount_percent")
+  salePrice       Decimal? @map("sale_price")
+  isAvailable     Boolean  @default(true) @map("is_available")
+  sortOrder       Int      @default(0)    @map("sort_order")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([partnerId, serviceType])
+  @@map("partner_products")
+}
+
+model PartnerAlbumPhoto {
+  id        Int     @id @default(autoincrement())
+  partnerId Int     @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  serviceType String @default("") @map("service_type")
+
+  url        String
+  caption    String?
+  isFeatured Boolean @default(false) @map("is_featured")
+  sortOrder  Int     @default(0)     @map("sort_order")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([partnerId, serviceType, isFeatured])
+  @@map("partner_album_photos")
+}
+
+model PartnerServiceEvent {
+  id        Int     @id @default(autoincrement())
+  partnerId Int     @map("partner_id")
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  serviceType String @default("") @map("service_type")
+
+  name        String
+  description String?  @db.Text
+  eventDate   DateTime @map("event_date")
+
+  photos PartnerServiceEventPhoto[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  @@index([partnerId, serviceType, eventDate])
+  @@map("partner_service_events")
+}
+
+model PartnerServiceEventPhoto {
+  id      Int                 @id @default(autoincrement())
+  eventId Int                 @map("event_id")
+  event   PartnerServiceEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  url     String
+  caption String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([eventId])
+  @@map("partner_service_event_photos")
 }

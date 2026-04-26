@@ -295,6 +295,13 @@ export type PartnerWhereInput = {
   successStories?: Prisma.MatchmakerSuccessStoryListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
   makeupProfile?: Prisma.XOR<Prisma.MakeupArtistProfileNullableScalarRelationFilter, Prisma.MakeupArtistProfileWhereInput> | null
+  photographyPackages?: Prisma.PhotographyPackageListRelationFilter
+  photographyPhotos?: Prisma.PhotographyPhotoListRelationFilter
+  photographyEvents?: Prisma.PhotographyEventListRelationFilter
+  servicePackages?: Prisma.PartnerPackageListRelationFilter
+  serviceProducts?: Prisma.PartnerProductListRelationFilter
+  servicePhotos?: Prisma.PartnerAlbumPhotoListRelationFilter
+  serviceEvents?: Prisma.PartnerServiceEventListRelationFilter
 }
 
 export type PartnerOrderByWithRelationInput = {
@@ -318,6 +325,13 @@ export type PartnerOrderByWithRelationInput = {
   successStories?: Prisma.MatchmakerSuccessStoryOrderByRelationAggregateInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   makeupProfile?: Prisma.MakeupArtistProfileOrderByWithRelationInput
+  photographyPackages?: Prisma.PhotographyPackageOrderByRelationAggregateInput
+  photographyPhotos?: Prisma.PhotographyPhotoOrderByRelationAggregateInput
+  photographyEvents?: Prisma.PhotographyEventOrderByRelationAggregateInput
+  servicePackages?: Prisma.PartnerPackageOrderByRelationAggregateInput
+  serviceProducts?: Prisma.PartnerProductOrderByRelationAggregateInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoOrderByRelationAggregateInput
+  serviceEvents?: Prisma.PartnerServiceEventOrderByRelationAggregateInput
 }
 
 export type PartnerWhereUniqueInput = Prisma.AtLeast<{
@@ -344,6 +358,13 @@ export type PartnerWhereUniqueInput = Prisma.AtLeast<{
   successStories?: Prisma.MatchmakerSuccessStoryListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
   makeupProfile?: Prisma.XOR<Prisma.MakeupArtistProfileNullableScalarRelationFilter, Prisma.MakeupArtistProfileWhereInput> | null
+  photographyPackages?: Prisma.PhotographyPackageListRelationFilter
+  photographyPhotos?: Prisma.PhotographyPhotoListRelationFilter
+  photographyEvents?: Prisma.PhotographyEventListRelationFilter
+  servicePackages?: Prisma.PartnerPackageListRelationFilter
+  serviceProducts?: Prisma.PartnerProductListRelationFilter
+  servicePhotos?: Prisma.PartnerAlbumPhotoListRelationFilter
+  serviceEvents?: Prisma.PartnerServiceEventListRelationFilter
 }, "id" | "userId">
 
 export type PartnerOrderByWithAggregationInput = {
@@ -405,6 +426,13 @@ export type PartnerCreateInput = {
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateInput = {
@@ -427,6 +455,13 @@ export type PartnerUncheckedCreateInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUpdateInput = {
@@ -448,6 +483,13 @@ export type PartnerUpdateInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateInput = {
@@ -470,6 +512,13 @@ export type PartnerUncheckedUpdateInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateManyInput = {
@@ -712,6 +761,104 @@ export type PartnerUpdateOneRequiredWithoutMakeupProfileNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutMakeupProfileInput, Prisma.PartnerUpdateWithoutMakeupProfileInput>, Prisma.PartnerUncheckedUpdateWithoutMakeupProfileInput>
 }
 
+export type PartnerCreateNestedOneWithoutPhotographyPackagesInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPackagesInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyPackagesInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutPhotographyPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPackagesInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyPackagesInput
+  upsert?: Prisma.PartnerUpsertWithoutPhotographyPackagesInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutPhotographyPackagesInput, Prisma.PartnerUpdateWithoutPhotographyPackagesInput>, Prisma.PartnerUncheckedUpdateWithoutPhotographyPackagesInput>
+}
+
+export type PartnerCreateNestedOneWithoutPhotographyPhotosInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPhotosInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyPhotosInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutPhotographyPhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPhotosInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyPhotosInput
+  upsert?: Prisma.PartnerUpsertWithoutPhotographyPhotosInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutPhotographyPhotosInput, Prisma.PartnerUpdateWithoutPhotographyPhotosInput>, Prisma.PartnerUncheckedUpdateWithoutPhotographyPhotosInput>
+}
+
+export type PartnerCreateNestedOneWithoutPhotographyEventsInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedCreateWithoutPhotographyEventsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyEventsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutPhotographyEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedCreateWithoutPhotographyEventsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutPhotographyEventsInput
+  upsert?: Prisma.PartnerUpsertWithoutPhotographyEventsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutPhotographyEventsInput, Prisma.PartnerUpdateWithoutPhotographyEventsInput>, Prisma.PartnerUncheckedUpdateWithoutPhotographyEventsInput>
+}
+
+export type PartnerCreateNestedOneWithoutServicePackagesInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServicePackagesInput, Prisma.PartnerUncheckedCreateWithoutServicePackagesInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServicePackagesInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutServicePackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServicePackagesInput, Prisma.PartnerUncheckedCreateWithoutServicePackagesInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServicePackagesInput
+  upsert?: Prisma.PartnerUpsertWithoutServicePackagesInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutServicePackagesInput, Prisma.PartnerUpdateWithoutServicePackagesInput>, Prisma.PartnerUncheckedUpdateWithoutServicePackagesInput>
+}
+
+export type PartnerCreateNestedOneWithoutServiceProductsInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServiceProductsInput, Prisma.PartnerUncheckedCreateWithoutServiceProductsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServiceProductsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutServiceProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServiceProductsInput, Prisma.PartnerUncheckedCreateWithoutServiceProductsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServiceProductsInput
+  upsert?: Prisma.PartnerUpsertWithoutServiceProductsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutServiceProductsInput, Prisma.PartnerUpdateWithoutServiceProductsInput>, Prisma.PartnerUncheckedUpdateWithoutServiceProductsInput>
+}
+
+export type PartnerCreateNestedOneWithoutServicePhotosInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServicePhotosInput, Prisma.PartnerUncheckedCreateWithoutServicePhotosInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServicePhotosInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutServicePhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServicePhotosInput, Prisma.PartnerUncheckedCreateWithoutServicePhotosInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServicePhotosInput
+  upsert?: Prisma.PartnerUpsertWithoutServicePhotosInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutServicePhotosInput, Prisma.PartnerUpdateWithoutServicePhotosInput>, Prisma.PartnerUncheckedUpdateWithoutServicePhotosInput>
+}
+
+export type PartnerCreateNestedOneWithoutServiceEventsInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServiceEventsInput, Prisma.PartnerUncheckedCreateWithoutServiceEventsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServiceEventsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+}
+
+export type PartnerUpdateOneRequiredWithoutServiceEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.PartnerCreateWithoutServiceEventsInput, Prisma.PartnerUncheckedCreateWithoutServiceEventsInput>
+  connectOrCreate?: Prisma.PartnerCreateOrConnectWithoutServiceEventsInput
+  upsert?: Prisma.PartnerUpsertWithoutServiceEventsInput
+  connect?: Prisma.PartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PartnerUpdateToOneWithWhereWithoutServiceEventsInput, Prisma.PartnerUpdateWithoutServiceEventsInput>, Prisma.PartnerUncheckedUpdateWithoutServiceEventsInput>
+}
+
 export type PartnerCreateWithoutUserInput = {
   businessName: string
   businessEmail: string
@@ -730,6 +877,13 @@ export type PartnerCreateWithoutUserInput = {
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutUserInput = {
@@ -751,6 +905,13 @@ export type PartnerUncheckedCreateWithoutUserInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutUserInput = {
@@ -787,6 +948,13 @@ export type PartnerUpdateWithoutUserInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutUserInput = {
@@ -808,6 +976,13 @@ export type PartnerUncheckedUpdateWithoutUserInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutSuccessStoriesInput = {
@@ -828,6 +1003,13 @@ export type PartnerCreateWithoutSuccessStoriesInput = {
   phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutSuccessStoriesInput = {
@@ -849,6 +1031,13 @@ export type PartnerUncheckedCreateWithoutSuccessStoriesInput = {
   phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutSuccessStoriesInput = {
@@ -885,6 +1074,13 @@ export type PartnerUpdateWithoutSuccessStoriesInput = {
   phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutSuccessStoriesInput = {
@@ -906,6 +1102,13 @@ export type PartnerUncheckedUpdateWithoutSuccessStoriesInput = {
   phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutTypesInput = {
@@ -926,6 +1129,13 @@ export type PartnerCreateWithoutTypesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutTypesInput = {
@@ -947,6 +1157,13 @@ export type PartnerUncheckedCreateWithoutTypesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutTypesInput = {
@@ -983,6 +1200,13 @@ export type PartnerUpdateWithoutTypesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutTypesInput = {
@@ -1004,6 +1228,13 @@ export type PartnerUncheckedUpdateWithoutTypesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutAddressesInput = {
@@ -1024,6 +1255,13 @@ export type PartnerCreateWithoutAddressesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutAddressesInput = {
@@ -1045,6 +1283,13 @@ export type PartnerUncheckedCreateWithoutAddressesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutAddressesInput = {
@@ -1081,6 +1326,13 @@ export type PartnerUpdateWithoutAddressesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutAddressesInput = {
@@ -1102,6 +1354,13 @@ export type PartnerUncheckedUpdateWithoutAddressesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutPhonesInput = {
@@ -1122,6 +1381,13 @@ export type PartnerCreateWithoutPhonesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutPhonesInput = {
@@ -1143,6 +1409,13 @@ export type PartnerUncheckedCreateWithoutPhonesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutPhonesInput = {
@@ -1179,6 +1452,13 @@ export type PartnerUpdateWithoutPhonesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutPhonesInput = {
@@ -1200,6 +1480,13 @@ export type PartnerUncheckedUpdateWithoutPhonesInput = {
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutBookingsInput = {
@@ -1220,6 +1507,13 @@ export type PartnerCreateWithoutBookingsInput = {
   phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutBookingsInput = {
@@ -1241,6 +1535,13 @@ export type PartnerUncheckedCreateWithoutBookingsInput = {
   phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutBookingsInput = {
@@ -1277,6 +1578,13 @@ export type PartnerUpdateWithoutBookingsInput = {
   phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutBookingsInput = {
@@ -1298,6 +1606,13 @@ export type PartnerUncheckedUpdateWithoutBookingsInput = {
   phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerCreateWithoutMakeupProfileInput = {
@@ -1318,6 +1633,13 @@ export type PartnerCreateWithoutMakeupProfileInput = {
   phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
   successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerUncheckedCreateWithoutMakeupProfileInput = {
@@ -1339,6 +1661,13 @@ export type PartnerUncheckedCreateWithoutMakeupProfileInput = {
   phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
 }
 
 export type PartnerCreateOrConnectWithoutMakeupProfileInput = {
@@ -1375,6 +1704,13 @@ export type PartnerUpdateWithoutMakeupProfileInput = {
   phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
   successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
 }
 
 export type PartnerUncheckedUpdateWithoutMakeupProfileInput = {
@@ -1396,6 +1732,895 @@ export type PartnerUncheckedUpdateWithoutMakeupProfileInput = {
   phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
   successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutPhotographyPackagesInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutPhotographyPackagesInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutPhotographyPackagesInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPackagesInput>
+}
+
+export type PartnerUpsertWithoutPhotographyPackagesInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyPackagesInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPackagesInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutPhotographyPackagesInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyPackagesInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyPackagesInput>
+}
+
+export type PartnerUpdateWithoutPhotographyPackagesInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutPhotographyPackagesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutPhotographyPhotosInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutPhotographyPhotosInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutPhotographyPhotosInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPhotosInput>
+}
+
+export type PartnerUpsertWithoutPhotographyPhotosInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyPhotosInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedCreateWithoutPhotographyPhotosInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutPhotographyPhotosInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyPhotosInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyPhotosInput>
+}
+
+export type PartnerUpdateWithoutPhotographyPhotosInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutPhotographyPhotosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutPhotographyEventsInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutPhotographyEventsInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutPhotographyEventsInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedCreateWithoutPhotographyEventsInput>
+}
+
+export type PartnerUpsertWithoutPhotographyEventsInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyEventsInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedCreateWithoutPhotographyEventsInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutPhotographyEventsInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutPhotographyEventsInput, Prisma.PartnerUncheckedUpdateWithoutPhotographyEventsInput>
+}
+
+export type PartnerUpdateWithoutPhotographyEventsInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutPhotographyEventsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutServicePackagesInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutServicePackagesInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutServicePackagesInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServicePackagesInput, Prisma.PartnerUncheckedCreateWithoutServicePackagesInput>
+}
+
+export type PartnerUpsertWithoutServicePackagesInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutServicePackagesInput, Prisma.PartnerUncheckedUpdateWithoutServicePackagesInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServicePackagesInput, Prisma.PartnerUncheckedCreateWithoutServicePackagesInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutServicePackagesInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutServicePackagesInput, Prisma.PartnerUncheckedUpdateWithoutServicePackagesInput>
+}
+
+export type PartnerUpdateWithoutServicePackagesInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutServicePackagesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutServiceProductsInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutServiceProductsInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutServiceProductsInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServiceProductsInput, Prisma.PartnerUncheckedCreateWithoutServiceProductsInput>
+}
+
+export type PartnerUpsertWithoutServiceProductsInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutServiceProductsInput, Prisma.PartnerUncheckedUpdateWithoutServiceProductsInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServiceProductsInput, Prisma.PartnerUncheckedCreateWithoutServiceProductsInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutServiceProductsInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutServiceProductsInput, Prisma.PartnerUncheckedUpdateWithoutServiceProductsInput>
+}
+
+export type PartnerUpdateWithoutServiceProductsInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutServiceProductsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutServicePhotosInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutServicePhotosInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutServicePhotosInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServicePhotosInput, Prisma.PartnerUncheckedCreateWithoutServicePhotosInput>
+}
+
+export type PartnerUpsertWithoutServicePhotosInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutServicePhotosInput, Prisma.PartnerUncheckedUpdateWithoutServicePhotosInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServicePhotosInput, Prisma.PartnerUncheckedCreateWithoutServicePhotosInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutServicePhotosInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutServicePhotosInput, Prisma.PartnerUncheckedUpdateWithoutServicePhotosInput>
+}
+
+export type PartnerUpdateWithoutServicePhotosInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutServicePhotosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceEvents?: Prisma.PartnerServiceEventUncheckedUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerCreateWithoutServiceEventsInput = {
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPartnerProfileInput
+  types?: Prisma.PartnerTypeAssignmentCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerUncheckedCreateWithoutServiceEventsInput = {
+  id?: number
+  userId: number
+  businessName: string
+  businessEmail: string
+  contactPerson?: string | null
+  bannerPath?: string | null
+  logoImage?: string | null
+  website?: string | null
+  bio?: string | null
+  status?: string
+  yearsOfExperience?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedCreateNestedManyWithoutPartnerInput
+  addresses?: Prisma.PartnerAddressUncheckedCreateNestedManyWithoutPartnerInput
+  phones?: Prisma.PartnerPhoneUncheckedCreateNestedManyWithoutPartnerInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedCreateNestedManyWithoutPartnerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPartnerInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedCreateNestedOneWithoutPartnerInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedCreateNestedManyWithoutPartnerInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedCreateNestedManyWithoutPartnerInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedCreateNestedManyWithoutPartnerInput
+  servicePackages?: Prisma.PartnerPackageUncheckedCreateNestedManyWithoutPartnerInput
+  serviceProducts?: Prisma.PartnerProductUncheckedCreateNestedManyWithoutPartnerInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type PartnerCreateOrConnectWithoutServiceEventsInput = {
+  where: Prisma.PartnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServiceEventsInput, Prisma.PartnerUncheckedCreateWithoutServiceEventsInput>
+}
+
+export type PartnerUpsertWithoutServiceEventsInput = {
+  update: Prisma.XOR<Prisma.PartnerUpdateWithoutServiceEventsInput, Prisma.PartnerUncheckedUpdateWithoutServiceEventsInput>
+  create: Prisma.XOR<Prisma.PartnerCreateWithoutServiceEventsInput, Prisma.PartnerUncheckedCreateWithoutServiceEventsInput>
+  where?: Prisma.PartnerWhereInput
+}
+
+export type PartnerUpdateToOneWithWhereWithoutServiceEventsInput = {
+  where?: Prisma.PartnerWhereInput
+  data: Prisma.XOR<Prisma.PartnerUpdateWithoutServiceEventsInput, Prisma.PartnerUncheckedUpdateWithoutServiceEventsInput>
+}
+
+export type PartnerUpdateWithoutServiceEventsInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPartnerProfileNestedInput
+  types?: Prisma.PartnerTypeAssignmentUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUpdateManyWithoutPartnerNestedInput
+}
+
+export type PartnerUncheckedUpdateWithoutServiceEventsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  businessEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bannerPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsOfExperience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  types?: Prisma.PartnerTypeAssignmentUncheckedUpdateManyWithoutPartnerNestedInput
+  addresses?: Prisma.PartnerAddressUncheckedUpdateManyWithoutPartnerNestedInput
+  phones?: Prisma.PartnerPhoneUncheckedUpdateManyWithoutPartnerNestedInput
+  successStories?: Prisma.MatchmakerSuccessStoryUncheckedUpdateManyWithoutPartnerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPartnerNestedInput
+  makeupProfile?: Prisma.MakeupArtistProfileUncheckedUpdateOneWithoutPartnerNestedInput
+  photographyPackages?: Prisma.PhotographyPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyPhotos?: Prisma.PhotographyPhotoUncheckedUpdateManyWithoutPartnerNestedInput
+  photographyEvents?: Prisma.PhotographyEventUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePackages?: Prisma.PartnerPackageUncheckedUpdateManyWithoutPartnerNestedInput
+  serviceProducts?: Prisma.PartnerProductUncheckedUpdateManyWithoutPartnerNestedInput
+  servicePhotos?: Prisma.PartnerAlbumPhotoUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 
@@ -1409,6 +2634,13 @@ export type PartnerCountOutputType = {
   phones: number
   successStories: number
   bookings: number
+  photographyPackages: number
+  photographyPhotos: number
+  photographyEvents: number
+  servicePackages: number
+  serviceProducts: number
+  servicePhotos: number
+  serviceEvents: number
 }
 
 export type PartnerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1417,6 +2649,13 @@ export type PartnerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   phones?: boolean | PartnerCountOutputTypeCountPhonesArgs
   successStories?: boolean | PartnerCountOutputTypeCountSuccessStoriesArgs
   bookings?: boolean | PartnerCountOutputTypeCountBookingsArgs
+  photographyPackages?: boolean | PartnerCountOutputTypeCountPhotographyPackagesArgs
+  photographyPhotos?: boolean | PartnerCountOutputTypeCountPhotographyPhotosArgs
+  photographyEvents?: boolean | PartnerCountOutputTypeCountPhotographyEventsArgs
+  servicePackages?: boolean | PartnerCountOutputTypeCountServicePackagesArgs
+  serviceProducts?: boolean | PartnerCountOutputTypeCountServiceProductsArgs
+  servicePhotos?: boolean | PartnerCountOutputTypeCountServicePhotosArgs
+  serviceEvents?: boolean | PartnerCountOutputTypeCountServiceEventsArgs
 }
 
 /**
@@ -1464,6 +2703,55 @@ export type PartnerCountOutputTypeCountBookingsArgs<ExtArgs extends runtime.Type
   where?: Prisma.BookingWhereInput
 }
 
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountPhotographyPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhotographyPackageWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountPhotographyPhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhotographyPhotoWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountPhotographyEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhotographyEventWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountServicePackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerPackageWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountServiceProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerProductWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountServicePhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerAlbumPhotoWhereInput
+}
+
+/**
+ * PartnerCountOutputType without action
+ */
+export type PartnerCountOutputTypeCountServiceEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerServiceEventWhereInput
+}
+
 
 export type PartnerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1486,6 +2774,13 @@ export type PartnerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   successStories?: boolean | Prisma.Partner$successStoriesArgs<ExtArgs>
   bookings?: boolean | Prisma.Partner$bookingsArgs<ExtArgs>
   makeupProfile?: boolean | Prisma.Partner$makeupProfileArgs<ExtArgs>
+  photographyPackages?: boolean | Prisma.Partner$photographyPackagesArgs<ExtArgs>
+  photographyPhotos?: boolean | Prisma.Partner$photographyPhotosArgs<ExtArgs>
+  photographyEvents?: boolean | Prisma.Partner$photographyEventsArgs<ExtArgs>
+  servicePackages?: boolean | Prisma.Partner$servicePackagesArgs<ExtArgs>
+  serviceProducts?: boolean | Prisma.Partner$serviceProductsArgs<ExtArgs>
+  servicePhotos?: boolean | Prisma.Partner$servicePhotosArgs<ExtArgs>
+  serviceEvents?: boolean | Prisma.Partner$serviceEventsArgs<ExtArgs>
   _count?: boolean | Prisma.PartnerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["partner"]>
 
@@ -1548,6 +2843,13 @@ export type PartnerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   successStories?: boolean | Prisma.Partner$successStoriesArgs<ExtArgs>
   bookings?: boolean | Prisma.Partner$bookingsArgs<ExtArgs>
   makeupProfile?: boolean | Prisma.Partner$makeupProfileArgs<ExtArgs>
+  photographyPackages?: boolean | Prisma.Partner$photographyPackagesArgs<ExtArgs>
+  photographyPhotos?: boolean | Prisma.Partner$photographyPhotosArgs<ExtArgs>
+  photographyEvents?: boolean | Prisma.Partner$photographyEventsArgs<ExtArgs>
+  servicePackages?: boolean | Prisma.Partner$servicePackagesArgs<ExtArgs>
+  serviceProducts?: boolean | Prisma.Partner$serviceProductsArgs<ExtArgs>
+  servicePhotos?: boolean | Prisma.Partner$servicePhotosArgs<ExtArgs>
+  serviceEvents?: boolean | Prisma.Partner$serviceEventsArgs<ExtArgs>
   _count?: boolean | Prisma.PartnerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PartnerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1567,6 +2869,13 @@ export type $PartnerPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     successStories: Prisma.$MatchmakerSuccessStoryPayload<ExtArgs>[]
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     makeupProfile: Prisma.$MakeupArtistProfilePayload<ExtArgs> | null
+    photographyPackages: Prisma.$PhotographyPackagePayload<ExtArgs>[]
+    photographyPhotos: Prisma.$PhotographyPhotoPayload<ExtArgs>[]
+    photographyEvents: Prisma.$PhotographyEventPayload<ExtArgs>[]
+    servicePackages: Prisma.$PartnerPackagePayload<ExtArgs>[]
+    serviceProducts: Prisma.$PartnerProductPayload<ExtArgs>[]
+    servicePhotos: Prisma.$PartnerAlbumPhotoPayload<ExtArgs>[]
+    serviceEvents: Prisma.$PartnerServiceEventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1983,6 +3292,13 @@ export interface Prisma__PartnerClient<T, Null = never, ExtArgs extends runtime.
   successStories<T extends Prisma.Partner$successStoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$successStoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchmakerSuccessStoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookings<T extends Prisma.Partner$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   makeupProfile<T extends Prisma.Partner$makeupProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$makeupProfileArgs<ExtArgs>>): Prisma.Prisma__MakeupArtistProfileClient<runtime.Types.Result.GetResult<Prisma.$MakeupArtistProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  photographyPackages<T extends Prisma.Partner$photographyPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$photographyPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhotographyPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  photographyPhotos<T extends Prisma.Partner$photographyPhotosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$photographyPhotosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhotographyPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  photographyEvents<T extends Prisma.Partner$photographyEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$photographyEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhotographyEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  servicePackages<T extends Prisma.Partner$servicePackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$servicePackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  serviceProducts<T extends Prisma.Partner$serviceProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$serviceProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  servicePhotos<T extends Prisma.Partner$servicePhotosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$servicePhotosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerAlbumPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  serviceEvents<T extends Prisma.Partner$serviceEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Partner$serviceEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerServiceEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2562,6 +3878,174 @@ export type Partner$makeupProfileArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   include?: Prisma.MakeupArtistProfileInclude<ExtArgs> | null
   where?: Prisma.MakeupArtistProfileWhereInput
+}
+
+/**
+ * Partner.photographyPackages
+ */
+export type Partner$photographyPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhotographyPackage
+   */
+  select?: Prisma.PhotographyPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhotographyPackage
+   */
+  omit?: Prisma.PhotographyPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhotographyPackageInclude<ExtArgs> | null
+  where?: Prisma.PhotographyPackageWhereInput
+  orderBy?: Prisma.PhotographyPackageOrderByWithRelationInput | Prisma.PhotographyPackageOrderByWithRelationInput[]
+  cursor?: Prisma.PhotographyPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhotographyPackageScalarFieldEnum | Prisma.PhotographyPackageScalarFieldEnum[]
+}
+
+/**
+ * Partner.photographyPhotos
+ */
+export type Partner$photographyPhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhotographyPhoto
+   */
+  select?: Prisma.PhotographyPhotoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhotographyPhoto
+   */
+  omit?: Prisma.PhotographyPhotoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhotographyPhotoInclude<ExtArgs> | null
+  where?: Prisma.PhotographyPhotoWhereInput
+  orderBy?: Prisma.PhotographyPhotoOrderByWithRelationInput | Prisma.PhotographyPhotoOrderByWithRelationInput[]
+  cursor?: Prisma.PhotographyPhotoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhotographyPhotoScalarFieldEnum | Prisma.PhotographyPhotoScalarFieldEnum[]
+}
+
+/**
+ * Partner.photographyEvents
+ */
+export type Partner$photographyEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhotographyEvent
+   */
+  select?: Prisma.PhotographyEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhotographyEvent
+   */
+  omit?: Prisma.PhotographyEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhotographyEventInclude<ExtArgs> | null
+  where?: Prisma.PhotographyEventWhereInput
+  orderBy?: Prisma.PhotographyEventOrderByWithRelationInput | Prisma.PhotographyEventOrderByWithRelationInput[]
+  cursor?: Prisma.PhotographyEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhotographyEventScalarFieldEnum | Prisma.PhotographyEventScalarFieldEnum[]
+}
+
+/**
+ * Partner.servicePackages
+ */
+export type Partner$servicePackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerPackage
+   */
+  select?: Prisma.PartnerPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerPackage
+   */
+  omit?: Prisma.PartnerPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerPackageInclude<ExtArgs> | null
+  where?: Prisma.PartnerPackageWhereInput
+  orderBy?: Prisma.PartnerPackageOrderByWithRelationInput | Prisma.PartnerPackageOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerPackageScalarFieldEnum | Prisma.PartnerPackageScalarFieldEnum[]
+}
+
+/**
+ * Partner.serviceProducts
+ */
+export type Partner$serviceProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerProduct
+   */
+  select?: Prisma.PartnerProductSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerProduct
+   */
+  omit?: Prisma.PartnerProductOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerProductInclude<ExtArgs> | null
+  where?: Prisma.PartnerProductWhereInput
+  orderBy?: Prisma.PartnerProductOrderByWithRelationInput | Prisma.PartnerProductOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerProductWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerProductScalarFieldEnum | Prisma.PartnerProductScalarFieldEnum[]
+}
+
+/**
+ * Partner.servicePhotos
+ */
+export type Partner$servicePhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerAlbumPhoto
+   */
+  select?: Prisma.PartnerAlbumPhotoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerAlbumPhoto
+   */
+  omit?: Prisma.PartnerAlbumPhotoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerAlbumPhotoInclude<ExtArgs> | null
+  where?: Prisma.PartnerAlbumPhotoWhereInput
+  orderBy?: Prisma.PartnerAlbumPhotoOrderByWithRelationInput | Prisma.PartnerAlbumPhotoOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerAlbumPhotoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerAlbumPhotoScalarFieldEnum | Prisma.PartnerAlbumPhotoScalarFieldEnum[]
+}
+
+/**
+ * Partner.serviceEvents
+ */
+export type Partner$serviceEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerServiceEvent
+   */
+  select?: Prisma.PartnerServiceEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerServiceEvent
+   */
+  omit?: Prisma.PartnerServiceEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerServiceEventInclude<ExtArgs> | null
+  where?: Prisma.PartnerServiceEventWhereInput
+  orderBy?: Prisma.PartnerServiceEventOrderByWithRelationInput | Prisma.PartnerServiceEventOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerServiceEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerServiceEventScalarFieldEnum | Prisma.PartnerServiceEventScalarFieldEnum[]
 }
 
 /**
